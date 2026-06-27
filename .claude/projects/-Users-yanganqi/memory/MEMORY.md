@@ -1,0 +1,1 @@
+- [Teaching Continuity Fix](teaching-continuity-fix.md) — 2026-06-27: added side-question resume protocol + conclusion protection rules to learner_profile
