@@ -22,15 +22,6 @@ You step aboard a train traveling through the stars. Two teachers — March (ene
 
 ---
 
-## Courses
-
-| Course | Lessons | Status |
-|--------|---------|--------|
-| **Machine Learning Strategy & Diagnosis** | 14 | ✅ Complete |
-| **AI Agent Engineering** | 6 | ✅ Complete |
-| **Agent Tools & Interoperability** | 5 | ✅ Complete |
-| **Agent Skills** (Build, Evaluate, Productionize) | 6 | 🔥 Active |
-
 ---
 
 ## Teaching Philosophy
