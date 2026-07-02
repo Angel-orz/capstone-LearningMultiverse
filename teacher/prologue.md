@@ -1,73 +1,73 @@
-# 序章 — 山上
+# Prologue — The Mountain
 
-你是自己找到这个地方的。
+You found this place on your own.
 
-在网上搜"天文台 + 机器学习"的时候，你翻到了一个旧帖子。发帖时间是两年前，只有三行字和一个坐标。没有照片，没有评价，没有"这里真好，强烈推荐"。第三行说：*上山的路不太好走。但能找到。*
+While searching online for "observatory + machine learning," you stumbled upon an old post. It was from two years ago, just three lines of text and a set of coordinates. No photos, no reviews, no "what a great place, highly recommend." The third line read: *The road up isn't easy. But you can find it.*
 
-然后你就在这了。
+And then you were here.
 
-路确实不太好走。公交车从市区出发，过了最后一站之后，窗外的房子越来越矮、越来越稀。你在一个叫"望岭"的站下了车——其实只是一个站牌，旁边一棵树，树的影子刚好盖住站牌上的字。剩下的路要走上去。
+The road really wasn't easy. The bus left the city center, and after the last stop, the houses outside the window grew shorter and sparser. You got off at a stop called "Wangling" — though it was really just a sign, with a tree beside it whose shadow just happened to cover the characters on the sign. The rest of the way, you had to walk.
 
-上山的路是水泥铺的，但路面被树根撑出了细细的裂缝，每一条裂缝里都长着青苔。空气在变——不是突然变的，是每往上走几十米，温度就降一点点，湿度就厚一点点。走了大约十五分钟之后，你开始闻到一种不像是山里的东西：很淡的金属气息，混在松针和湿土的味道之间，像有人刚在远处烧过焊。
+The uphill path was paved with concrete, but the surface was split by fine cracks where tree roots had pushed through, each crevice filled with moss. The air changed — not suddenly, but with every few dozen meters upward, the temperature dropped a fraction and the humidity thickened a little. After about fifteen minutes, you started to smell something that didn't belong in the mountains: a faint metallic scent, mixed in with the pine needles and damp soil, like someone had been welding in the distance.
 
-然后你就看到了。
+And then you saw it.
 
-天文台在山顶。不是你想的那种圆顶——圆顶还在，但已经褪成了灰绿色，像一枚生了锈的硬币侧躺在山脊上。外墙的白色涂料大面积剥落，露出底下暗红色的砖。围绕着主建筑有一圈窄窄的走廊，栏杆上晒着一件灰色的卫衣——不是被风吹上去的，是被人整整齐齐搭在上面的。
+The observatory was at the summit. Not the kind of dome you'd imagined — the dome was still there, but it had faded to a grayish green, like a rust-worn coin lying on its side along the ridge. Large patches of white paint had peeled off the exterior walls, revealing dark red brick underneath. A narrow corridor encircled the main building, and draped over the railing was a gray hoodie — not blown there by the wind, but folded neatly by someone's hand.
 
-正门没锁。你推了一下，门开了。
+The front door wasn't locked. You pushed, and it opened.
 
-里面比外面凉。一股混合的气味迎面而来：旧木头、清洁剂、和你在山路上隐约闻到的那种金属气息的源头——圆厅的穹顶内壁是铜的，大片暗绿和赭色的氧化斑迹从中心往四周蔓延，像一张被时间浸透的地图。
+Inside was cooler than outside. A mix of smells hit you: old wood, cleaning solution, and the source of that metallic scent you'd caught on the trail — the dome's inner ceiling was copper, covered in large patches of dark green and ocher oxidation, spreading from the center outward like a map soaked through by time.
 
-圆厅很大，比你想象的大。穹顶最高处的接缝没有完全闭合，一道窄而锐利的光从缝里切进来，落在长桌的一头，在桌面上划出一条明暗分明的边界。白板靠着弧形墙壁，上面写着几行字——不是课堂板书，更像是草稿。字迹有两种：一种是整洁的近乎打印体的，公式和变量对齐得一丝不苟；另一种是歪歪扭扭的圈和箭头，在旁边画了一个不像任何东西的示意图，旁边打了个问号。问号的尾巴被画成了一只鸟。
+The rotunda was huge, bigger than you'd imagined. The seam at the highest point of the dome wasn't fully closed; a thin, sharp blade of light cut through the gap, landing on one end of a long table, drawing a clear boundary between light and shadow on its surface. A whiteboard leaned against the curved wall, with a few lines of writing on it — not classroom notes, more like a draft. Two distinct hands: one clean, almost like print, formulas and variables aligned with precision; the other was a mess of crooked circles and arrows, with a sketch next to them that didn't look like anything recognizable, beside a question mark. The tail of the question mark had been drawn as a bird.
 
-长桌上有两个杯子。一个白瓷茶杯，杯壁内侧有深色的茶渍，摸着还是温的。一个军绿色保温杯，盖子拧得很紧，杯身没有任何标志。
+On the long table, there were two cups. A white porcelain teacup, dark tea stains on the inside wall, still warm to the touch. An army-green thermos, its lid screwed on tight, with no markings on its body.
 
-两个杯子都是半满的，像两个人刚刚离开。
+Both cups were half full, as if two people had just stepped away.
 
-你站在圆厅中央，大约过了十秒。阳光从穹顶那条缝里刚好落在你脚边，你注意到地板上有一小片被擦得很干净的扇形区域——和周围略积薄尘的木地板形成对比，像是有人经常站在这里，面对着白板，或者面对着窗。
+You stood in the center of the rotunda for about ten seconds. The sunlight from the crack in the dome fell right at your feet. You noticed a small, fan-shaped patch on the floor that had been polished clean — in contrast with the surrounding wooden floor lightly layered with dust, as if someone often stood there, facing the whiteboard, or facing the window.
 
-"门开着，所以你就进来了。"
+"The door was open. So you came in."
 
-声音从你身后传来。不是很近——从走廊方向，约莫七八步的距离。语气不是质问，也不是欢迎。是在陈述一个事实。
+The voice came from behind you. Not close — from the direction of the corridor, about seven or eight steps away. The tone wasn't accusatory, nor was it welcoming. It was a statement of fact.
 
-你转过身。
+You turned around.
 
-她比你想象的要高一点，但站姿不太讲究——重心放在一条腿上，另一只脚轻轻晃着。粉色中长发，发间别着几枚颜色跳脱的发卡，像是随手夹上去的。浅蓝色的眼睛正看着你，目光里没有戒备，但也不是全然的友善——是"我还在判断"的注视。她穿了一件浅色短外套，左手拎着一台小相机，镜头盖没盖，晃在手腕的绳子上。
+She was a little taller than you'd imagined, but her stance was casual — weight on one leg, the other foot gently swaying. Medium-length pink hair, with a few brightly colored hair clips that looked like they'd been thrown in casually. Light blue eyes were looking at you — not guarded, but not entirely friendly either. It was an "I'm still deciding" kind of gaze. She wore a light short jacket, and in her left hand she carried a small camera, the lens cap off, dangling on its wrist strap.
 
-她看了你大概三秒钟。然后笑了一下——不是客套的笑，是嘴角先弯起来，眼睛后面才跟上的那种。
+She looked at you for about three seconds. Then she smiled — not a polite smile, but one where the corners of her mouth curved first, and her eyes followed a beat later.
 
-"你是看了那个帖子来的吧。"
+"You saw that post, didn't you."
 
-又是陈述句。你不知道她怎么知道的。
+Another statement. You had no idea how she knew.
 
-"我叫三月。"她把相机换了只手。"你先进来吧，厨房在走廊尽头——走过去的时候注意左手边的门，别推开。那是地下室入口。下面住的人不太喜欢没有预告的访客。"
+"I'm March." She switched the camera to her other hand. "Come on in. The kitchen is at the end of the corridor — just watch out for the door on your left. Don't open it. That's the entrance to the basement. The person who lives down there doesn't like unannounced visitors."
 
-她说完这句话之后停了一拍，像是自己听到了"地下室住的人"这个表述有多奇怪，然后补了一句——一句更轻的话："不是说他有攻击性。只是他的保温杯拧得比较紧。"
+After she said this, she paused for a beat, as if she'd just heard how strange the phrase "the person who lives down there" sounded. Then she added — a lighter remark: "Not that he's aggressive. It's just that his thermos is screwed on a little tighter."
 
-她朝长桌上那个军绿色杯子点了点头。你注意到她的目光在杯子上多停了一瞬——不是在意杯子本身，是在意杯子还在不在。
+She nodded toward the army-green thermos on the long table. You noticed her gaze lingered on it for an extra moment — not for the cup itself, but to confirm it was still there.
 
-然后她迈开步子往走廊方向走去，步伐轻快但不急。经过你身边时，你闻到了一丝很淡的茶叶和柑橘混在一起的气味——来自她的外套，或者她的头发，或者那个白瓷杯。
+Then she started walking toward the corridor, her steps light but unhurried. As she passed you, you caught a faint scent of tea and citrus mixed together — from her jacket, or her hair, or that white porcelain cup.
 
-"你来的路上注意到那个金属味了吗？"她没有回头。"穹顶的铜壁。夏天会氧化得更快。冬天会慢一点。我一直想用这个味道预测第二天的湿度——"她说到一半自己先笑了，然后收回来，"失败了。那个味道跟太多东西有关。风、光的入射角、昨天晚上的温度。"
+"Did you notice that metallic smell on your way up?" She didn't turn around. "The copper on the dome. It oxidizes faster in summer. Slower in winter. I've been trying to use that scent to predict the next day's humidity —" She laughed at herself mid-sentence, then pulled back. "It didn't work. That scent depends on too many things. The wind, the angle of the light, last night's temperature."
 
-她在走廊中间转过身。"你知道吗——预测，其实比你以为的更难。有太多你看不到的变量。"
+She turned around in the middle of the corridor. "You know — prediction is actually harder than you think. There are too many variables you can't see."
 
-然后她看着你，像是在等你接话，又像是在给你时间思考这句话有没有更深的含义。
+Then she looked at you, as if waiting for you to respond, or giving you time to think about whether that sentence had a deeper meaning.
 
-走廊那头的厨房方向传来水开的声音——电磁水壶按下开关的那一声"咔"。不是很大，但在安静的天文台里，足够清晰。
+From the kitchen at the end of the corridor came the sound of water boiling — the click of an electric kettle being switched on. Not loud, but in the quiet observatory, it was clear enough.
 
-三月回头朝声音的方向看了一眼。"哦。他醒了。"
+March glanced back toward the sound. "Oh. He's awake."
 
-她没有解释"他"是谁。只是继续往厨房走，丢下一句：
+She didn't explain who "he" was. She just kept walking toward the kitchen, leaving behind a final remark:
 
-"你要喝茶吗？还是咖啡？"顿了顿。"保温杯的话——那个你得自己问他借。"
+"Do you want tea? Or coffee?" A pause. "The thermos, though — you'll have to ask him yourself."
 
 ---
 
-你站了大概五秒钟。圆厅里又恢复了安静，只有穹顶那条缝里的光在你脚边极其缓慢地移动。白板上那只鸟形问号被光切了一半，另一半藏在影子里。桌子上的两个杯子安静地各占各的位置——白瓷杯的杯壁水珠正在慢慢凝结，军绿色杯子的盖子没有被碰过。
+You stood there for about five seconds. The rotunda fell quiet again. The light from the crack in the dome crept ever so slowly across the floor at your feet. The bird-shaped question mark on the whiteboard was sliced in half by the light, the other half hidden in shadow. On the table, the two cups sat quietly in their respective places — beads of condensation slowly forming on the white porcelain, the lid of the army-green thermos untouched.
 
-你忽然理解了那个帖子的第三行。
+You suddenly understood the third line of that post.
 
-上山的路不太好走。但能找到。
+The road up isn't easy. But you can find it.
 
-然后你迈开步子往厨房走去。
+And then you stepped forward, toward the kitchen.

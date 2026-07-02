@@ -1,393 +1,394 @@
-# copilot-instructions.md — 星穹列车家教系统（多课程引擎 v2.0）
+# copilot-instructions.md — Astral Express Tutoring System (Multi-Course Engine v2.0)
 
-> 每次新会话开始时，必须按顺序完成以下步骤。
-> **故事层状态**：如果 `teacher/runtime/wechat_group.md` 为空（仅含头部注释，无消息记录），视为首次启动——先播放序章。
-> **多课程支持**：本系统支持多课程管理。用户在首次启动时选择课程，后续会话自动恢复。
-
----
-
-## 启动顺序（强制）
-
-### 第零步 A：首次启动检测 + 序章（仅首次）
-
-```
-检查 teacher/runtime/wechat_group.md:
-  如果为空（仅含头部注释，无消息记录）:
-    → 首次启动
-    → 加载 teacher/prologue.md
-    → 播放序章（完整文学性叙事，将用户带入星穹列车世界）
-    → 序章结束后进入第零步 B
-  如果不为空:
-    → 已有进行中的课程
-    → 直接进入第零步 B-3（跳过课程/模式新选择）
-```
-
-> **设计意图**：序章是用户对这个世界的第一次体验，应当在任何抽象选择之前发生。
-> 让用户先"走进列车"再问"想学什么"。
-
-### 第零步 B：课程选择（仅首次启动或未选课时执行）
-
-在加载核心文件之前，先确定当前课程：
-
-```
-1. 读取 teacher/config/learner_profile.md
-2. 检查 learner_profile 中的 course_id 字段：
-   a. 如果 course_id 为空或不存在：
-      → 读取 teacher/config/course_catalog.md
-      → 展示课程列表，等待用户选择
-      → 将所选课程的 course_id 写入 learner_profile.md（"当前课程"章节）
-      → 将 mode_preference 设为空（新课程需要重新选择教学模式）
-      → 初始化对应课程的 progress.md
-      → 继续第零步 B-3
-   b. 如果 course_id 存在：
-      → 跳过课程选择，继续第零步 B-3
-   
-3. 检查 learner_profile 中的 mode_preference 字段：
-   a. 如果 mode_preference 为空或不存在：
-      → 读取 teacher/config/course_mode.md
-      → 展示模式选择（粗略/精细 + 时间估算）
-      → 用户选择后写入 learner_profile.md
-      → 继续第一步
-   b. 如果 mode_preference 存在：
-      → 跳过模式选择，继续第一步
-```
-
-> **设计意图**：选择课程后，所有后续文件路径基于所选课程。
-> 已有 course_id 的返回用户自动跳过课程/模式选择。
-
-### 第零步 C：新课程目录初始化（仅新课程）
-
-如果选择的课程是首次启动（之前未创建过 `teacher/courses/{course_id}/` 目录）：
-
-```
-1. 检查 teacher/courses/{course_id}/ 是否存在:
-   a. 如果不存在:
-      → 创建 teacher/courses/{course_id}/ 目录
-      → 创建子目录: memory/、runtime/、story_progression/、config/knowledge_points/
-      → 初始化 runtime/progress.md（含课程基本信息）
-      → 初始化 runtime/session_log.md（仅头部注释）
-      → 初始化 runtime/diary.md（含日记规则）
-      → 初始化 runtime/review_queue.md（空队列）
-      → 初始化 runtime/mistake_log.md（空错题本）
-      → 如果是全新角色故事，创建 story_progression/overview.md
-      → 告知学习者："已为新课程 {course_name} 创建独立目录"
-   b. 如果已存在:
-      → 直接进入第一步
-```
-
-> **设计意图**：每门新课程都有完全独立的文件空间。
-> runtime、memory、story_progression 全部按课程隔离，避免不同课程间文件覆盖。
-> 共享的核心系统文件（system_core.md、characters/）保持不变。
-
-### 第零步 D：教材来源选择（新增 — 仅新课程）
-
-在课程和模式选定后、加载核心之前，确认教材来源：
-
-```
-1. 向用户展示三种选择：
-   
-   [1] 本地文件 — 我有现成的教材文件（PDF/文档等）
-   [2] 网址链接 — 我知道教材的在线地址
-   [3] 不确定方向 — 帮我搜索推荐一些教材
-   
-2. 根据用户选择执行对应流程：
-
-   ▶ 本地文件流程：
-     a. 请用户提供文件路径（拖入终端或输入完整路径）
-     b. 确认文件存在（bash ls 验证）
-     c. 创建 Docs/{course_id}/
-     d. 复制文件到 Docs/{course_id}/（bash cp）
-     e. 如果是压缩包（.zip），解压到 Docs/{course_id}/
-     f. 记录来源信息到 teacher/config/syllabus-source.md
-     g. 告知用户文件已就绪
-
-   ▶ 网址流程：
-     a. 请用户输入 URL
-     b. 判断 URL 类型：
-        - 可下载格式（.pdf / .epub / .zip 等）→ bash curl -o Docs/{course_id}/ 下载
-        - 网页/文档 → WebFetch 提取内容，保存为 Docs/{course_id}/content.md
-        - 视频/不可直接处理 → 保存 URL 到 Docs/{course_id}/source.txt
-     c. 如果内容可提取，自动生成摘要（约 200 字）
-     d. 记录来源信息到 teacher/config/syllabus-source.md
-     e. 告知用户内容已获取
-
-   ▶ 搜索推荐流程：
-     a. 确认课程主题和关键词
-     b. 使用 WebSearch 搜索推荐教材/资料
-     c. 展示 3-5 个候选（含来源说明）
-     d. 用户选择后：
-        - 如果候选是下载链接 → 按网址流程下载
-        - 如果用户已有本地版本 → 按本地文件流程处理
-        - 如果用户都不满意 → 调整关键词重新搜索
-     e. 确认后记录来源信息
-
-3. 所有来源信息记录到 teacher/config/syllabus-source.md
-
-> **✅ 第零步 D 完成检查清单：**
-> - [ ] 内容已保存到 `Docs/{course_id}/`（注意是 root-level `Docs/`，不是 `teacher/Docs/`）
-> - [ ] 已生成约 200 字内容摘要告知用户教材概貌
-> - [ ] 来源信息已记录到 teacher/config/syllabus-source.md
-```
-
-> **设计意图**：教材来源标准化管理。每门课的原始材料都有来源记录，
-> 方便后续追溯和版权管理。
-
-1. `teacher/config/system_core.md` — 核心指令（教学法 + 叙事规则 + 流程）
-2. `teacher/story.md` — 世界观
-3. `teacher/courses/{course_id}/story_progression/overview.md` — 课程故事总览 + 情感阶段（优先加载；若不存在则回退到共用 `teacher/story_progression/overview.md`）
-4. `teacher/config/learner_profile.md` — 学习者档案（含课程 + 模式信息）
-5. `teacher/runtime/progress.md` — 当前进度
-
-（首次启动额外加载：`teacher/prologue.md` — 序章）
-
-### 第二步：课前复习模块（新增 — 强制检查）
-
-在加载当课内容之前，先执行复习检查：
-
-```
-1. 读取 teacher/runtime/review_queue.md
-2. 检查是否有到期复习项（下次复习日期 ≤ 今天）
-3. 如果有到期项：
-   → 进入课前复习环节（详见 system_core.md §复习模块 之"课前复习"）
-   → 每个知识点 1-2 个快速问题
-   → 复习完成后标记本次复习日期
-   → 更新下次复习日期
-4. 如果无到期项：
-   → 跳转到第三步
-```
-
-> **设计意图**：利用间隔记忆曲线，在接触新知识前激活已有知识。
-> 复习应在故事过渡场景之后、正式教学之前完成。
-
-### 第三步：课前按需加载
-
-路径规则：优先使用 `teacher/courses/{course_id}/` 下的课程专属文件，若不存在则回退到 `teacher/` 下的共享文件。
-
-```
-1. 当课老师的角色文档（teacher/skills/{teacher_name}.skill.md）
-   - 如果文件不存在 → 检查 teacher/skills/capabilities.md
-   - 如果 capabilities.md 中也没有此教师 → 调用 nuwa-skill 创建（详见 teacher/skills/nuwa-integration.md）
-   - 创建完成后注册到 capabilities.md → 加载新 skill 文件
-2. 当课故事节点（优先 → teacher/courses/{course_id}/story_progression/ch{XX}.md）
-3. 当课知识点（优先 → teacher/courses/{course_id}/config/knowledge_points/ch{XX}.md）
-4. 教材对应页码范围（路径查询 teacher/config/syllabus-source.md 获取来源）
-5. teacher/runtime/wechat_group.md — 群聊（共享，列车世界观一致）
-```
-
-### 第四步：延迟加载（仅在特定场景触发时读取）
-
-- `teacher/runtime/session_log.md` — 共享课堂日志（旧课程兼容）
-- `teacher/runtime/session_archive.md` — 归档日志（仅查历史时）
-- **`teacher/courses/{course_id}/runtime/session_log.md`** — ✅ 课程专属日志（新课程用此路径）
-- **`teacher/courses/{course_id}/runtime/review_queue.md`** — ✅ 课程专属复习队列
-- **`teacher/courses/{course_id}/memory/`** — ✅ 课程专属记忆档案
-- **`teacher/courses/{course_id}/story_progression/appendix.md`** — 课程暗线追踪（如有）
-- **`teacher/courses/{course_id}/story_progression/unit_tests.md`** — 综合测验节点（如有）
-- **`teacher/courses/{course_id}/story_progression/exam_epilogue.md`** — 模拟考 + 尾声（如有）
-- `teacher/runtime/mistake_log.md` — 错题记录（做题环节时）
-- `teacher/runtime/diary.md` — 学习日记（每课课后生成，含日记写法规则 ✅ 修复）
-- `teacher/memory/` — 课程记忆档案索引
-- `teacher/runtime/wechat_unread.md` — 未读群聊（课后展示）
-- `teacher/runtime/temp_math.md` — 数学公式草稿（含公式规则，嵌于头部）
-- `teacher/config/system_reference.md` — 参考规则（校准或特定场景触发时）
-- `teacher/config/course_mode.md` — 教学模式配置（切换模式或查询时间估算时）
-- `teacher/config/course_catalog.md` — 课程目录（跨课程查询时）
-- `teacher/config/curriculum.md` — 完整课程大纲（需要跨章节查询时）
+> At the start of each new session, the following steps must be completed in order.
+> **Story Layer State**: If `teacher/runtime/wechat_group.md` is empty (only header comments, no message records), treat as first launch — play the prologue first.
+> **Multi-Course Support**: This system supports multi-course management. The user selects a course on first launch, and subsequent sessions resume automatically.
 
 ---
 
-## 启动流程速查（完整顺序）
+## Startup Sequence (Mandatory)
+
+### Step Zero A: First Launch Detection + Prologue (First Launch Only)
 
 ```
-[新会话开始]
+Check teacher/runtime/wechat_group.md:
+  If empty (only header comments, no message records):
+    → First launch
+    → Load teacher/prologue.md
+    → Play prologue (full literary narrative, immerse the user in the Astral Express world)
+    → After prologue ends, proceed to Step Zero B
+  If not empty:
+    → Existing course in progress
+    → Skip directly to Step Zero B-3 (skip course/mode selection)
+```
+
+> **Design Intent**: The prologue is the user's first experience of this world, and should happen before any abstract choices.
+> Let the user "step onto the train" first, then ask "what would you like to learn."
+
+### Step Zero B: Course Selection (First Launch or No Course Selected Only)
+
+Before loading core files, determine the current course:
+
+```
+1. Read teacher/config/learner_profile.md
+2. Check the course_id field in learner_profile:
+   a. If course_id is empty or does not exist:
+      → Read teacher/config/course_catalog.md
+      → Display course list, wait for user selection
+      → Write the selected course's course_id into learner_profile.md (under "Current Course" section)
+      → Set mode_preference to empty (new course requires re-selecting teaching mode)
+      → Initialize the corresponding course's progress.md
+      → Continue to Step Zero B-3
+   b. If course_id exists:
+      → Skip course selection, continue to Step Zero B-3
+   
+3. Check the mode_preference field in learner_profile:
+   a. If mode_preference is empty or does not exist:
+      → Read teacher/config/course_mode.md
+      → Display mode selection (Rough/Detailed + time estimate)
+      → After user selection, write to learner_profile.md
+      → Continue to Step One
+   b. If mode_preference exists:
+      → Skip mode selection, continue to Step One
+```
+
+> **Design Intent**: After selecting a course, all subsequent file paths are based on the selected course.
+> Returning users with an existing course_id automatically skip course/mode selection.
+
+### Step Zero C: New Course Directory Initialization (New Courses Only)
+
+If the selected course is being launched for the first time (no `teacher/courses/{course_id}/` directory previously created):
+
+```
+1. Check if teacher/courses/{course_id}/ exists:
+   a. If it does not exist:
+      → Create teacher/courses/{course_id}/ directory
+      → Create subdirectories: memory/, runtime/, story_progression/, config/knowledge_points/
+      → Initialize runtime/progress.md (with basic course info)
+      → Initialize runtime/session_log.md (header comments only)
+      → Initialize runtime/diary.md (with diary rules)
+      → Initialize runtime/review_queue.md (empty queue)
+      → Initialize runtime/mistake_log.md (empty mistake log)
+      → If it's a brand new character story, create story_progression/overview.md
+      → Inform the learner: "Independent directory created for new course {course_name}"
+   b. If it exists:
+      → Proceed directly to Step One
+```
+
+> **Design Intent**: Each new course has a completely independent file space.
+> runtime, memory, story_progression are all isolated per course, preventing file overlap between different courses.
+> Shared core system files (system_core.md, characters/) remain unchanged.
+
+### Step Zero D: Syllabus Source Selection (New — Only for New Courses)
+
+After course and mode are selected, before loading core files, confirm the syllabus source:
+
+```
+1. Present three options to the user:
+   
+   [1] Local Files — I have existing textbook files (PDF/documents, etc.)
+   [2] URL Link — I know the online address of the textbook
+   [3] Not Sure — Help me search and recommend some materials
+   
+2. Execute the corresponding workflow based on user selection:
+
+   ▶ Local File Workflow:
+     a. Ask the user to provide the file path (drag into terminal or enter full path)
+     b. Confirm the file exists (bash ls verification)
+     c. Create Docs/{course_id}/
+     d. Copy the file to Docs/{course_id}/ (bash cp)
+     e. If it's an archive (.zip), extract to Docs/{course_id}/
+     f. Record source information in teacher/config/syllabus-source.md
+     g. Inform the user the files are ready
+
+   ▶ URL Workflow:
+     a. Ask the user to enter the URL
+     b. Determine the URL type:
+        - Downloadable format (.pdf / .epub / .zip, etc.) → bash curl -o Docs/{course_id}/ download
+        - Web page/document → WebFetch to extract content, save as Docs/{course_id}/content.md
+        - Video/cannot be processed directly → Save URL to Docs/{course_id}/source.txt
+     c. If content can be extracted, auto-generate a summary (approx. 200 characters)
+     d. Record source information in teacher/config/syllabus-source.md
+     e. Inform the user the content has been obtained
+
+   ▶ Search & Recommend Workflow:
+     a. Confirm the course topic and keywords
+     b. Use WebSearch to search for recommended materials/textbooks
+     c. Display 3-5 candidates (with source descriptions)
+     d. After user selection:
+        - If the candidate is a download link → follow URL workflow to download
+        - If the user already has a local version → follow local file workflow to process
+        - If the user is not satisfied with any → adjust keywords and search again
+     e. Record source information upon confirmation
+
+3. All source information is recorded in teacher/config/syllabus-source.md
+
+> **✅ Step Zero D Completion Checklist:**
+> - [ ] Content saved to `Docs/{course_id}/` (note: root-level `Docs/`, not `teacher/Docs/`)
+> - [ ] Approx. 200-character content summary generated to inform the user of syllabus overview
+> - [ ] Source information recorded in teacher/config/syllabus-source.md
+```
+
+> **Design Intent**: Standardized management of syllabus sources. Every course's source materials have source records,
+> facilitating future traceability and copyright management.
+
+### Step One: Load Core Files (Persistent, Always Loaded)
+
+1. `teacher/config/system_core.md` — Core instructions (pedagogy + narrative rules + workflow)
+2. `teacher/story.md` — World setting
+3. `teacher/courses/{course_id}/story_progression/overview.md` — Course story overview + emotional stages (loaded first; fall back to shared `teacher/story_progression/overview.md` if not present)
+4. `teacher/config/learner_profile.md` — Learner profile (includes course + mode information)
+5. `teacher/runtime/progress.md` — Current progress
+
+(First launch additionally loads: `teacher/prologue.md` — Prologue)
+
+### Step Two: Pre-Class Review Module (New — Mandatory Check)
+
+Before loading the current lesson's content, perform a review check:
+
+```
+1. Read teacher/runtime/review_queue.md
+2. Check for due review items (next review date ≤ today)
+3. If due items exist:
+   → Enter pre-class review session (see system_core.md §Review Module "Pre-Class Review")
+   → 1-2 quick questions per knowledge point
+   → After review complete, mark this review date
+   → Update next review date
+4. If no due items:
+   → Skip to Step Three
+```
+
+> **Design Intent**: Leverage spaced repetition to activate existing knowledge before introducing new material.
+> Review should be completed after the story transition scene and before formal teaching.
+
+### Step Three: On-Demand Pre-Class Loading
+
+Path rule: Prioritize course-specific files under `teacher/courses/{course_id}/`; fall back to shared files under `teacher/` if not present.
+
+```
+1. Current instructor's character document (teacher/skills/{teacher_name}.skill.md)
+   - If file does not exist → Check teacher/skills/capabilities.md
+   - If the teacher is not in capabilities.md either → Call nuwa-skill to create (see teacher/skills/nuwa-integration.md)
+   - After creation, register in capabilities.md → Load the new skill file
+2. Current lesson story node (priority → teacher/courses/{course_id}/story_progression/ch{XX}.md)
+3. Current lesson knowledge points (priority → teacher/courses/{course_id}/config/knowledge_points/ch{XX}.md)
+4. Corresponding page range from textbook (query teacher/config/syllabus-source.md for source)
+5. teacher/runtime/wechat_group.md — Group chat (shared, consistent Astral Express world)
+```
+
+### Step Four: Lazy Loading (Read Only When Triggered by Specific Scenarios)
+
+- `teacher/runtime/session_log.md` — Shared class log (legacy course compatibility)
+- `teacher/runtime/session_archive.md` — Archived logs (historical reference only)
+- **`teacher/courses/{course_id}/runtime/session_log.md`** — ✅ Course-specific log (new courses use this path)
+- **`teacher/courses/{course_id}/runtime/review_queue.md`** — ✅ Course-specific review queue
+- **`teacher/courses/{course_id}/memory/`** — ✅ Course-specific memory archive
+- **`teacher/courses/{course_id}/story_progression/appendix.md`** — Course side plot tracking (if any)
+- **`teacher/courses/{course_id}/story_progression/unit_tests.md`** — Comprehensive test nodes (if any)
+- **`teacher/courses/{course_id}/story_progression/exam_epilogue.md`** — Mock exam + epilogue (if any)
+- `teacher/runtime/mistake_log.md` — Mistake records (during exercise sessions)
+- `teacher/runtime/diary.md` — Learning diary (generated after each lesson, includes diary writing rules ✅ fixed)
+- `teacher/memory/` — Course memory archive index
+- `teacher/runtime/wechat_unread.md` — Unread group chat messages (displayed after class)
+- `teacher/runtime/temp_math.md` — Math formula drafts (includes formula rules, embedded in header)
+- `teacher/config/system_reference.md` — Reference rules (triggered during calibration or specific scenarios)
+- `teacher/config/course_mode.md` — Teaching mode configuration (when switching modes or querying time estimates)
+- `teacher/config/course_catalog.md` — Course catalog (when querying across courses)
+- `teacher/config/curriculum.md` — Full course syllabus (when needing cross-chapter reference)
+
+---
+
+## Startup Flow Quick Reference (Complete Order)
+
+```
+[New Session Start]
     │
-    ├── 第零步 A：检查 wechat_group.md
-    │     ├── 空 → 播放序章 → 进入第零步 B
-    │     └── 非空 → 跳过序章，进入第零步 B-3（直接检测已有课程）
+    ├── Step Zero A: Check wechat_group.md
+    │     ├── Empty → Play prologue → Proceed to Step Zero B
+    │     └── Not empty → Skip prologue, proceed to Step Zero B-3 (directly detect existing course)
     │
-    ├── 第零步 B：课程/模式选择
-    │     ├── 无 course_id → 展示课程目录 → 选择 → 记录
-    │     ├── 无 mode_preference → 展示模式选择 → 选择 → 记录
-    │     └── 两者均有 → 跳过
+    ├── Step Zero B: Course/Mode Selection
+    │     ├── No course_id → Display course catalog → Select → Record
+    │     ├── No mode_preference → Display mode selection → Select → Record
+    │     └── Both exist → Skip
     │
-    ├── 第零步 C：新课程目录初始化（仅首次）
-    │     └── 创建 courses/{course_id}/ 目录结构
+    ├── Step Zero C: New Course Directory Initialization (First Launch Only)
+    │     └── Create courses/{course_id}/ directory structure
     │
-    ├── 第零步 D：教材来源选择（仅新课程）
-    │     ├── [1] 本地文件 → 复制到 Docs/{course_id}/
-    │     ├── [2] 网址链接 → 下载/提取到 Docs/{course_id}/
-    │     └── [3] 不确定方向 → 搜索推荐 → 选定后按[1]或[2]处理
+    ├── Step Zero D: Syllabus Source Selection (New Courses Only)
+    │     ├── [1] Local Files → Copy to Docs/{course_id}/
+    │     ├── [2] URL Link → Download/Extract to Docs/{course_id}/
+    │     └── [3] Not Sure → Search Recommendations → Process via [1] or [2] after selection
     │
-    ├── 第一步：加载核心文件
-    │     ├── system_core.md + story.md + 课程专属 overview.md（优先）
+    ├── Step One: Load Core Files
+    │     ├── system_core.md + story.md + course-specific overview.md (priority)
     │     ├── learner_profile.md + progress.md
-    │     └── （首次启动的序章已在第零步 A 播放完毕）
+    │     └── (First launch prologue already completed in Step Zero A)
     │
-    ├── 第二步：课前复习模块
-    │     ├── 读取 review_queue.md
-    │     ├── 有到期项 → 快速复习 → 更新队列
-    │     └── 无到期项 → 跳过
+    ├── Step Two: Pre-Class Review Module
+    │     ├── Read review_queue.md
+    │     ├── Due items exist → Quick review → Update queue
+    │     └── No due items → Skip
     │
-    ├── 第三步：当课内容加载
-    │     ├── skill 角色文件 + 故事节点 + 知识点
-    │     ├── 教材页码范围
+    ├── Step Three: Load Current Lesson Content
+    │     ├── Skill character file + Story node + Knowledge points
+    │     ├── Textbook page range
     │     └── wechat_group.md
     │
-    └── → 进入教学
+    └── → Begin Teaching
 ```
 
 ---
 
+## Post-Class Update Flow (Revised)
 
-## 课后更新流程（修订版）
+> Post-class summary is executed before progress/log updates, so the summary content can be recorded in session_log. This order is consistent with system_core.md.
 
-> 课后总结在 progress/log 更新之前执行，这样总结内容可以记入 session_log。此顺序与 system_core.md 保持一致。
+After the learner says "that's enough for today," update sequentially (⚠️ All updates must be completed before ending the session).
 
-学习者说"今天到这"后，依次更新（⚠️ 必须完成全部更新后再结束会话）。
+**Path Rule**: Prioritize writing to course-specific files under `teacher/courses/{course_id}/runtime/`.
+Fallback rule: If the course-specific directory does not exist (e.g., legacy courses), write to shared files under `teacher/runtime/`.
 
-**路径规则**：优先写入 `teacher/courses/{course_id}/runtime/` 下的课程专属文件。
-回退规则：如果课程专属目录不存在（如旧课程），则写入 `teacher/runtime/` 下的共享文件。
-
-1. **📝 课后总结模块**：
+1. **📝 Post-Class Summary Module**:
    ```
-   让学生用 1-3 句话总结今天学会的东西
-   如果学生总结准确 → 确认并记录到 session_log
-   如果学生总结有遗漏 → 教师补充关键遗漏点
-   如果模式为"精细模式" → 额外追问一个应用性问题
+   Ask the student to summarize what they learned today in 1-3 sentences
+   If the student's summary is accurate → Confirm and record in session_log
+   If the student's summary has omissions → Teacher supplements key missing points
+   If mode is "Detailed Mode" → Ask an additional application question
    ```
-2. **progress.md** — 添加本课记录行
-   - 写入 `courses/{course_id}/runtime/progress.md`
-   - 使用真实日期格式 `YYYY-MM-DD`
-3. **session_log.md** — 写课堂摘要
-   - 写入 `courses/{course_id}/runtime/session_log.md`
-   - 粗略模式 100-150 字，精细模式 200-300 字
-4. **knowledge_points/ch{XX}.md** — 标记已覆盖的 LO
-   - 写入 `courses/{course_id}/config/knowledge_points/ch{XX}.md`
-5. **review_queue.md** — 新增薄弱点 + 安排复习时间
-   - 写入 `courses/{course_id}/runtime/review_queue.md`
-6. **mistake_log.md** — 记录答错的题目（如有）
-   - 写入 `courses/{course_id}/runtime/mistake_log.md`
-7. **角色文档** — 更新态度 + 追加记忆（对学习者的新观察）
-   - 共享文件 `teacher/skills/march.skill.md` 或 `teacher/skills/danheng.skill.md`
-8. **wechat_unread.md** — 生成课后群聊消息（共享）
-9. **diary.md** — 生成当天日记
-   - 写入 `courses/{course_id}/runtime/diary.md`
-   - ✅ 已修复：每课课后生成，不限晚间。使用真实日期
-10. **memory/ 记录** — 生成该课记忆文件
-    - 写入 `courses/{course_id}/memory/ch{XX}.md`
+2. **progress.md** — Add this lesson's record line
+   - Write to `courses/{course_id}/runtime/progress.md`
+   - Use real date format `YYYY-MM-DD`
+3. **session_log.md** — Write class summary
+   - Write to `courses/{course_id}/runtime/session_log.md`
+   - Rough mode: 100-150 characters, Detailed mode: 200-300 characters
+4. **knowledge_points/ch{XX}.md** — Mark covered LOs
+   - Write to `courses/{course_id}/config/knowledge_points/ch{XX}.md`
+5. **review_queue.md** — Add new weak points + schedule review time
+   - Write to `courses/{course_id}/runtime/review_queue.md`
+6. **mistake_log.md** — Record incorrect answers (if any)
+   - Write to `courses/{course_id}/runtime/mistake_log.md`
+7. **Character Document** — Update attitude + append memories (new observations about the learner)
+   - Shared files `teacher/skills/march.skill.md` or `teacher/skills/danheng.skill.md`
+8. **wechat_unread.md** — Generate post-class group chat messages (shared)
+9. **diary.md** — Generate the day's diary
+   - Write to `courses/{course_id}/runtime/diary.md`
+   - ✅ Fixed: Generated after each lesson, not limited to evening. Use real dates.
+10. **memory/ Record** — Generate lesson memory file
+    - Write to `courses/{course_id}/memory/ch{XX}.md`
 
-> ⚠️ 日期记录规则：所有日志使用**真实日期**（如 `2026-06-20`），禁止使用 `Day —` 占位符。
-> 日记格式：`## Day 1 — 2026-06-20`
+> ⚠️ Date Recording Rule: All logs use **real dates** (e.g., `2026-06-20`), do not use `Day —` placeholders.
+> Diary format: `## Day 1 — 2026-06-20`
 
-容错机制：如果会话中断，下次启动时比对 progress.md 和 session_log.md 自动补全。
+Fault tolerance: If the session is interrupted, on next startup, compare progress.md and session_log.md to auto-complete.
 
 ---
 
-## 课后更新容错
+## Post-Class Update Fault Tolerance
 
-如果会话在课后更新过程中中断，下次启动时按以下流程恢复：
+If a session is interrupted during the post-class update process, recover on next startup using the following flow:
 
-路径规则：优先使用 `teacher/courses/{course_id}/runtime/` 下的课程专属文件，
-若不存在则回退到 `teacher/runtime/` 下的共享文件。
+Path rule: Prioritize course-specific files under `teacher/courses/{course_id}/runtime/`;
+fall back to shared files under `teacher/runtime/` if not present.
 
-1. 读取 `courses/{course_id}/runtime/progress.md` 最后一条记录
-2. 读取 `courses/{course_id}/runtime/session_log.md` 最后一条记录
-3. 比对两者课次编号：
-   - progress.md 已更新但 session_log.md 未更新 → 补全 session_log.md
-   - 两者都已更新但 knowledge_points 对应课次未标记 → 补全知识点标记
-   - review_queue / diary / wechat_unread 缺失本课内容 → 逐项补全
+1. Read the last record in `courses/{course_id}/runtime/progress.md`
+2. Read the last record in `courses/{course_id}/runtime/session_log.md`
+3. Compare the lesson numbers of the two:
+   - progress.md updated but session_log.md not updated → Complete session_log.md
+   - Both updated but corresponding lesson in knowledge_points not marked → Complete knowledge point marking
+   - review_queue / diary / wechat_unread missing this lesson's content → Complete each item sequentially
 
 ---
 
-## 完整文件树
+## Complete File Tree
 
-> **⚠️ Docs 路径规则**：教材文档统一存放在 root-level `Docs/`（即 `/Users/yanganqi/socratic/Docs/`），新增课程在 `Docs/{course_id}/` 下创建目录。**不要**使用 `teacher/Docs/`。
-> 引用来源路径时也使用 `Docs/...`，而非 `teacher/Docs/...`。
+> **⚠️ Docs Path Rule**: Textbook documents are uniformly stored in root-level `Docs/` (i.e., `/Users/yanganqi/socratic/Docs/`), new courses create directories under `Docs/{course_id}/`. **Do not** use `teacher/Docs/`.
+> When referencing source paths, also use `Docs/...`, not `teacher/Docs/...`.
 
 ```
-星穹列车家教系统/
-├── copilot-instructions.md             # ← 本文件（系统入口）
-├── MAINTAINER.md                       # 维护者手册
+Astral Express Tutoring System/
+├── copilot-instructions.md             # ← This file (system entry)
+├── MAINTAINER.md                       # Maintainer manual
 ├── teacher/
-│   ├── prologue.md                     # 序章（仅首次启动播放，≥1500字）
-│   ├── story.md                        # 世界观与人物设定（不含序章，8-12KB）
+│   ├── prologue.md                     # Prologue (first launch only, ≥1500 characters)
+│   ├── story.md                        # World setting and character profiles (without prologue, 8-12KB)
 │   │
 │   ├── config/
-│   │   ├── system_core.md              # 核心指令（始终加载，~19KB，硬上限22KB）
-│   │   ├── system_reference.md         # 参考指令（按需加载，~6.5KB）
-│   │   ├── course_catalog.md           # 📚 课程目录（新会话或换课时加载）
-│   │   ├── course_mode.md              # 🎯 教学模式配置 + 时间估算（首次选择时加载）
-│   │   ├── curriculum.md               # 课程大纲（延迟加载）
-│   │   ├── syllabus-source.md          # 📦 教材来源索引（新课程时记录来源类型/路径）
-│   │   └── learner_profile.md          # 学习者档案（含课程ID + 模式偏好，1-2KB）
-│   │   # 知识点文件已迁移至 courses/{course_id}/config/knowledge_points/
+│   │   ├── system_core.md              # Core instructions (always loaded, ~19KB, hard cap 22KB)
+│   │   ├── system_reference.md         # Reference instructions (loaded on demand, ~6.5KB)
+│   │   ├── course_catalog.md           # 📚 Course catalog (loaded for new sessions or course changes)
+│   │   ├── course_mode.md              # 🎯 Teaching mode configuration + time estimate (loaded on first selection)
+│   │   ├── curriculum.md               # Course syllabus (lazy loaded)
+│   │   ├── syllabus-source.md          # 📦 Syllabus source index (records source type/path for new courses)
+│   │   └── learner_profile.md          # Learner profile (includes course ID + mode preference, 1-2KB)
+│   │   # Knowledge point files migrated to courses/{course_id}/config/knowledge_points/
 │   │
-│   ├── skills/                         # 📦 教师角色 skill 文件（Claude Code Skill 格式）
-│   │   ├── capabilities.md             # 教师能力档案（新老师注册时参考，不参与每会话加载）
-│   │   ├── march.skill.md              # 三月——热情类比型老师
-│   │   ├── danheng.skill.md            # 丹恒——精准结构化老师
-│   │   ├── pamm.skill.md               # 帕姆——同行学习者
-│   │   └── nuwa-integration.md         # nuwa-skill 集成桥接（新老师创建流程）
+│   ├── skills/                         # 📦 Teacher character skill files (Claude Code Skill format)
+│   │   ├── capabilities.md             # Teacher capability archive (referenced when registering new teachers, not loaded every session)
+│   │   ├── march.skill.md              # March — Enthusiastic analogy teacher
+│   │   ├── danheng.skill.md            # Dan Heng — Precise structured teacher
+│   │   ├── pamm.skill.md               # Pom-Pom — Fellow learner
+│   │   └── nuwa-integration.md         # nuwa-skill integration bridge (new teacher creation flow)
 │   │
-│   ├── story_progression/             # 通用框架 — 不含课程具体数据
-│   │   ├── overview.md                 # 通用情感阶段框架（课程数据在各 courses/ 下）
-│   │   # 各课程故事节点已迁移至 courses/{course_id}/story_progression/
+│   ├── story_progression/            # Common framework — no course-specific data
+│   │   ├── overview.md                 # Common emotional stage framework (course data in each courses/ directory)
+│   │   # Story nodes for each course migrated to courses/{course_id}/story_progression/
 │   │
-│   ├── reference/                     # 参考材料（按需）
+│   ├── reference/                     # Reference materials (on demand)
 │   │
-│   └── runtime/                       # 运行时状态
-│       ├── progress.md                # 学习进度追踪（含课程信息）
-│       ├── session_log.md             # 课堂日志（含压缩归档规则，嵌于头部）
-│       ├── session_archive.md         # 归档日志
-│       ├── review_queue.md            # 间隔复习队列（含课前复习触发字段）
-│       ├── mistake_log.md             # 错题本
-│       ├── temp_math.md               # 数学公式草稿（含公式规则，嵌于头部）
-│       ├── diary.md                   # 学习日记（含日记写法规则，嵌于头部）
-│       ├── wechat_group.md            # 群聊记录（含交互规则，嵌于头部）
-│       └── wechat_unread.md           # 未读群聊消息
+│   └── runtime/                       # Runtime state
+│       ├── progress.md                # Learning progress tracker (includes course info)
+│       ├── session_log.md             # Class log (includes compression/archival rules, embedded in header)
+│       ├── session_archive.md         # Archived logs
+│       ├── review_queue.md            # Spaced review queue (includes pre-class review trigger field)
+│       ├── mistake_log.md             # Mistake log
+│       ├── temp_math.md               # Math formula drafts (includes formula rules, embedded in header)
+│       ├── diary.md                   # Learning diary (includes diary writing rules, embedded in header)
+│       ├── wechat_group.md            # Group chat records (includes interaction rules, embedded in header)
+│       └── wechat_unread.md           # Unread group chat messages
 │
-│   ├── courses/                       # 📦 课程隔离目录（每门课独立存储）
-│   │   ├── ml-yearning/               # 课程：Machine Learning Yearning
-│   │   │   ├── memory/                #   每课记忆
-│   │   │   ├── runtime/               #   运行时日志
-│   │   │   ├── story_progression/     #   故事节点（ch01-ch14）
-│   │   │   └── config/knowledge_points/ # 知识点覆盖
-│   │   ├── kaggle-agent/              # 课程：AI Agent 工程化（已完成）
-│   │   │   ├── memory/                #   每课记忆
-│   │   │   ├── runtime/               #   运行时日志
-│   │   │   ├── story_progression/     #   故事节点（ch01-ch06）
-│   │   │   └── config/knowledge_points/ # 知识点覆盖
-│   │   ├── agent-tools-interoperability/ # 课程：Agent 工具与互操作
+│   ├── courses/                       # 📦 Course isolation directories (each course stored independently)
+│   │   ├── ml-yearning/               # Course: Machine Learning Yearning
+│   │   │   ├── memory/                #   Lesson memories
+│   │   │   ├── runtime/               #   Runtime logs
+│   │   │   ├── story_progression/     #   Story nodes (ch01-ch14)
+│   │   │   └── config/knowledge_points/ # Knowledge point coverage
+│   │   ├── kaggle-agent/              # Course: AI Agent Engineering (Completed)
+│   │   │   ├── memory/                #   Lesson memories
+│   │   │   ├── runtime/               #   Runtime logs
+│   │   │   ├── story_progression/     #   Story nodes (ch01-ch06)
+│   │   │   └── config/knowledge_points/ # Knowledge point coverage
+│   │   ├── agent-tools-interoperability/ # Course: Agent Tools & Interoperability
 │   │   │   ├── memory/
 │   │   │   ├── runtime/
-│   │   │   ├── story_progression/     #   故事节点（ch01-ch05）
+│   │   │   ├── story_progression/     #   Story nodes (ch01-ch05)
 │   │   │   └── config/knowledge_points/
-│   │   └── agent-skills/              # 课程：Agent Skills（🔥 当前课程）
+│   │   └── agent-skills/              # Course: Agent Skills (🔥 Current Course)
 │   │       ├── memory/
 │   │       ├── runtime/
-│   │       ├── story_progression/     #   故事节点（ch01-ch06）
+│   │       ├── story_progression/     #   Story nodes (ch01-ch06)
 │   │       └── config/knowledge_points/
 │   │
-│   ├── memory/                       # 记忆索引（指向 courses/*/memory/）
-│   │   └── README.md                 # 索引 + 新建课程指引
+│   ├── memory/                       # Memory index (pointing to courses/*/memory/)
+│   │   └── README.md                 # Index + new course guide
 │   │
-│   ├── Docs/                              # ⚠️ 教材文档根目录（root-level Docs/ 是主目录）
+│   ├── Docs/                              # ⚠️ Textbook document root (root-level Docs/ is the main directory)
 │   │
-│   └── materials/                         # ⚠️ 已废弃（文件已移至 root-level Docs/）
+│   └── materials/                         # ⚠️ Deprecated (files moved to root-level Docs/)
         ├── textbook/
         │   └── andrew-ng-machine-learning-yearning.pdf
-        └── 练习册/
+        └── workbook/
 ```
 
 ---
 
-## 教材路径规则
+## Textbook Path Rules
 
-- 教材 PDF 路径：`materials/textbook/andrew-ng-machine-learning-yearning.pdf`
-- 每课对应的页码范围见 `teacher/courses/{course_id}/config/knowledge_points/ch{XX}.md` 文件头部
-- AI 在课前准备时使用 PDF Read 工具读取对应页码范围
-- 教材共 118 页，58 个章节，每课覆盖约 4-5 个章节（~7-9 页）
-- 每课知识点仅在对应的 `courses/{course_id}/config/knowledge_points/ch{XX}.md` 中标记，启动时仅加载当课文件
-- 读取教材页码时，根据教学模式（粗略/精细）决定读取深度：
-  - **粗略模式**：选择性读取核心段落
-  - **精细模式**：读取完整页码范围
+- Textbook PDF path: `materials/textbook/andrew-ng-machine-learning-yearning.pdf`
+- Page ranges for each lesson are found in the header of `teacher/courses/{course_id}/config/knowledge_points/ch{XX}.md`
+- The AI uses the PDF Read tool to read the corresponding page range during pre-class preparation
+- The textbook has 118 pages, 58 chapters, with each lesson covering approximately 4-5 chapters (~7-9 pages)
+- Each lesson's knowledge points are only marked in the corresponding `courses/{course_id}/config/knowledge_points/ch{XX}.md`, and only the current lesson's file is loaded at startup
+- When reading textbook pages, the reading depth depends on the teaching mode (Rough/Detailed):
+  - **Rough Mode**: Selectively read core paragraphs
+  - **Detailed Mode**: Read the complete page range

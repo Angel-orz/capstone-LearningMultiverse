@@ -1,107 +1,73 @@
-# learner_profile.md — 学习者档案
+# learner_profile.md — Learner Profile
 
-> 本文件动态更新。新会话启动时先检查 `course_id` 和 `course_started` 以决定是否展示课程选择。
+> This file is dynamically updated. On new session startup, check `course_id` and `course_started` to determine whether to show course selection.
 
-## 基本信息
+## Basic Info
 
-- **学科**：Agent Engineering / Security & Evaluation（当前课程）
-- **教材**：Sokratis Kartakis 等 — *Vibe Coding Agent Security and Evaluation*
-- **起点**：已完成 kaggle-agent / agent-tools-interoperability / agent-skills 课程
-- **目标**：系统掌握 Vibe Coding Agent 的安全架构与评估方法论（6 课，29 个知识点）
-- **学习动机**：主动寻求学习机会
-- **平台**：Claude Code（本地文件系统，完整功能）
-
----
-
-## 课程信息（动态更新）
-
-### 当前课程
-
-- **course_id**：`agent-security-eval`
-- **mode_preference**：`detailed`（可选值：`rough`=粗略模式, `detailed`=精细模式）
-- **课程名称**：Vibe Coding Agent 安全与评估（Agent Security & Evaluation）
-- **课程状态**：**进行中**
-- **教学模式**：`精细模式`（详见 course_mode.md）
-- **同行学习者**：帕姆（Pom-Pom）
-
-> 新会话启动时检测：若 `course_id` 为空或不存在 → 展示 course_catalog.md 让用户选择课程。
-> 若 `course_id` 存在但 `mode_preference` 为空 → 在进入课前准备前展示 course_mode.md 让用户选择模式。
-> 若 `course_id` 和 `mode_preference` 均存在 → 跳过课程/模式选择，直接进入核心加载。
-
-## 学习特征（动态更新）
-
-（初始为空——教学过程中 AI 根据观察追加）
-
-### 知识偏好
-倾向于从直觉/类比出发理解概念（对投篮类比反应良好），能自然地从具体例子抽象到一般原则。偏好先理解"为什么"再接受"是什么"——当三月问"你觉得是谁的错"时，学生选择了反思规则本身而非模型。
-
-### 卡点模式
-在被问到精确机制时倾向于给出方向性答案而非确定回答（"我不知道模型如何确定"），需要降级支持（从 S5 到 S4 提供方向提示）。不回避说"不知道"——诚实型卡点反应。
-
-### 最佳教学温度
-三月类比型教学有效。学生能从日常经验（投篮）迁移到 ML 概念，起手需要支持梯度在中高范围（S5→S4）。当被给予思考空间时能完成完整的推理链条。
-
-## 进度追踪
-
-- **开始日期**：Day 1（ml-yearning）
-- **完成日期**：Day —（ml-yearning ✅）
-- **当前课次**：全部 14 课（ml-yearning ✅）
-- **已覆盖知识点（概念）**：58 / 58（ml-yearning）
-- **已覆盖知识点（应用）**：58 / 58（ml-yearning）
-
-## 新课程进度追踪
-
-- **新课程ID**：`kaggle-agent`
-- **开始日期**：Day —
-- **课程目标**：系统学习 AI Agent 工程化的完整知识体系
-- **课程状态**：**全部完成** ✅
-- **课程小结**：6 课，29 个知识点，2026-06-21 ~ 2026-06-22
-- **已覆盖知识点（概念）**：14
-- **已覆盖知识点（应用）**：15
+- **Subject**: {Subject Name} (Current Course)
+- **Textbook**: {Author} — *{Textbook Title}*
+- **Starting Point**: {Prior knowledge or completed courses}
+- **Goal**: {Learning goal description} ({X} lessons, {Y} knowledge points)
+- **Learning Motivation**: {Self-directed / Guided / Other}
+- **Platform**: {Platform} (e.g., Claude Code, local file system, full functionality)
 
 ---
 
-## 当前课程进度
+## Course Info (Dynamically Updated)
 
-- **课程ID**：`agent-security-eval`
-- **课程名称**：Vibe Coding Agent 安全与评估（Agent Security & Evaluation）
-- **开始日期**：2026-06-29
-- **课程目标**：系统掌握 Vibe Coding Agent 的安全架构与评估方法论——从 7 大安全支柱到评估实践
-- **当前课次**：尚未开始（Ch.1 — 三月 🎀）
-- **教学模式**：精细模式
-- **同行学习者**：帕姆（Pom-Pom）
+### Current Course
 
-## 🧭 教学模式偏好（个人设置 — 最高优先级）
+- **course_id**: `{course-id}`
+- **mode_preference**: `{rough/detailed}`
+- **Course Name**: {Course Display Name}
+- **Course Status**: **{In Progress / Completed / Not Started}**
+- **Teaching Mode**: `{Rough Mode / Detailed Mode}` (see course_mode.md)
+- **Peer Learner**: Pom-Pom
 
-> 本学习者的教学模式偏好**覆盖** system_core.md 中的三条铁律和所有展开规则。
-> 当 learner_profile 中的偏好与系统默认方法论冲突时，以本文件为准。
+> On new session startup: if `course_id` is empty or missing → show course_catalog.md for course selection.
+> If `course_id` exists but `mode_preference` is empty → show course_mode.md before entering pre-lesson preparation.
+> If both `course_id` and `mode_preference` exist → skip course/mode selection, proceed directly to core loading.
 
-**教学风格**：讲解为主（非纯苏格拉底路线）
+## Learning Characteristics (Dynamically Updated)
 
-**核心规则**：
-1. 当学生被同一概念追问 2 次后仍无法推进（说"不知道"或答非所问）→ **必须切换至直接讲解**
-2. 讲解时：先陈述概念 → 然后用 1-2 个问题确认理解 → 确认后再继续推进
-3. 学生主动提问时 → **直接回答**，不需要通过追问让学生自己"挖出来"
-4. 正式术语可以在讲解中自然给出，不需要等学生自己命名后再"奖励"
-5. 不再遵守"问句数量 ≥ 陈述句数量"的约束
-6. **侧问回接协议**：学生提问偏离主线的侧问题时，回答完毕后**必须回到断点继续**。
-   - 回答前在心中标记断点位置（"刚才的教学在哪一步？"）
-   - 回答完毕后用一句话自然回接："好，刚才我们说到……"或"回到刚才的思路——你之前觉得……"
-   - ❌ 禁止回答完侧问后开启新话题或默认当前教学已完成
-7. **结论保护**：即使直接回答，也不提前泄露**本课未讲到的结论**。
-   - 学生问的是什么→答什么，不超额，不牵连
-   - ❌ 学生问"偏差是什么"时回答"偏差是模型的预测期望与真实值的差" → ✅ 只回答他问的，不继续说"方差是……"
-   - ❌ 在教学 P3/P4 阶段学生还没走到结论时，回答侧问顺带说出最终结论
-   - 🛡️ 如果无法完全回避未讲到的内容，至少加一句"这部分我们等下会细讲，先不展开"
+(Initially empty — appended by AI based on observations during teaching)
 
-**优先级执行顺序**：
+### Knowledge Preferences
+{Observations about preferred learning approach, e.g., analogy-based, intuition-first, etc.}
+
+### Stuck Patterns
+{Observations about how the learner reacts when stuck, e.g., says "I don't know", needs scaffolding downgrade, etc.}
+
+### Optimal Teaching Temperature
+{What teaching style works best, e.g., March's analogy-driven approach, support gradient range, etc.}
+
+## Teaching Mode Preference (Personal Setting — Highest Priority)
+
+> This learner's teaching mode preference **overrides** the three iron rules and all expansion rules in system_core.md.
+> When learner_profile preferences conflict with system default methodology, this file takes precedence.
+
+**Teaching Style**: Lecture-first (not pure Socratic method)
+
+**Core Rules**:
+1. If the student still cannot progress after 2 follow-up questions on the same concept (says "I don't know" or gives irrelevant answers) → **must switch to direct explanation**
+2. When explaining: state the concept first → then use 1-2 questions to confirm understanding → proceed after confirmation
+3. When the student actively asks a question → **answer directly**, no need to make the student "dig it out" through follow-ups
+4. Formal terminology can be naturally given during explanation; no need to wait for the student to name it themselves before "rewarding"
+5. No longer bound by the "number of questions ≥ number of statements" constraint
+6. **Side Question Re-engagement Protocol**: When the student asks a side question that deviates from the main topic, after answering, **must return to the breakpoint** to continue.
+   - Before answering, mentally note the breakpoint position ("What step was I at in the teaching?")
+   - After answering, use one sentence to naturally re-engage: "Alright, I was saying…" or "Back to what we were discussing—you mentioned earlier…"
+   - ❌ Never start a new topic or assume the current lesson is complete after answering a side question
+7. **Conclusion Protection**: Even when answering directly, do not prematurely reveal **conclusions not yet covered in the current lesson**.
+   - Answer only what is asked—no overshooting, no spillover
+   - ❌ When the student asks "What is bias?", do not add "and variance is…"
+   - ❌ During P3/P4 teaching stages, if the student hasn't reached the conclusion yet, don't reveal the final answer while answering a side question
+   - 🛡️ If you cannot completely avoid mentioning uncovered content, at least add "We'll go into this part later—let's not get ahead of ourselves"
+
+**Priority Execution Order**:
 ```
-learner_profile 教学模式偏好
-  → 覆盖 system_core 中的三条铁律和展开规则
-  → 保留故事设定和角色性格（三月/丹恒的说话方式不变）
-  → 保留 P5"命名与回看"阶段（但命名可以由老师主动给出）
+learner_profile teaching mode preference
+  → Overrides the three iron rules and expansion rules in system_core
+  → Preserves story setting and character personalities (March/Dan Heng's speaking style unchanged)
+  → Preserves P5 "Naming and Review" stage (but naming can be given proactively by the teacher)
 ```
-
-## 教师观察汇总
-
-**三月观察（Ch.1 课后）**：学生从"模型自己调整参数"起步，通过苏格拉底追问自主完成了训练集/测试集划分、评估指标、早停法、过拟合直觉的完整推理链条。逻辑连贯性好，能从类比（投篮）自然迁移。诚实型——卡住时会说"不知道"。对"预测"持实际操作导向态度，偏向工程思维，对自己的答案不寻求外部认可。**课后反馈：认为追问过多导致效率低，希望改为讲解为主的模式。从下次课起执行。**

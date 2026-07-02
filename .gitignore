@@ -1,9 +1,42 @@
+# --- OS Files ---
 .DS_Store
+Thumbs.db
+
+# --- Python ---
 __pycache__/
 *.pyc
-.env
-*.log
+*.pyo
 
-# Third-party reference materials — keep locally, not on GitHub (copyright)
+# --- Environment & Secrets ---
+.env
+.env.local
+.env.production
+*.key
+*.pem
+secrets/
+
+# --- Logs ---
+*.log
+logs/
+
+# --- Runtime Data ---
+# LearningMultiverse runtime state (progress, session logs, diary, review queue)
+# These contain learner-specific data and should not be committed.
+teacher/runtime/
+teacher/courses/*/runtime/
+teacher/courses/*/memory/
+teacher/courses/*/story_progression/
+
+# --- Third-party reference materials (keep locally for copyright) ---
 Docs/
 materials/
+
+# --- IDE / Editor ---
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# --- Claude Code ---
+.claude/

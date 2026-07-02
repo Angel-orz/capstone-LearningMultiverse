@@ -1,132 +1,132 @@
-# course_mode.md — 教学模式配置
+# course_mode.md — Teaching Mode Configuration
 
-> 用户在新课程开始时选择教学模式。选择记录到 learner_profile.md 的 `mode_preference` 字段。
-> 同一课程内保持模式一致，不可中途切换（防止教学内容断层）。
-
----
-
-## 模式选择
-
-### 粗略模式（概览型）— 适合快速概览或复习
-
-| 特性 | 说明 |
-|------|------|
-| **内容密度** | 聚焦核心概念、关键结论，删除部分细节案例和扩展讨论 |
-| **类比使用** | 类比为主，每个知识点 1-2 个核心类比 |
-| **教材引用** | 选择性引用教材核心观点，不完全逐页覆盖 |
-| **教学节奏** | 较快推进，每个知识点 P1-P5 流程压缩到 P1→P3→P5 |
-| **追问深度** | 学生答对核心概念即推进，不深入追问边缘细节 |
-| **适合场景** | 复习、概览、时间有限的学习者 |
-
-### 精细模式（深耕型）— 适合系统学习、深度理解
-
-| 特性 | 说明 |
-|------|------|
-| **内容密度** | 覆盖大部分教材内容，包含细节案例、边缘情况 |
-| **类比使用** | 多重类比，从不同角度切入同一概念 |
-| **教材引用** | 逐页推进，覆盖教材中的主要内容和示例 |
-| **教学节奏** | 稳重推进，每个知识点 P1-P5 完整流程 |
-| **追问深度** | 充分追问确认理解，包含应用层面的延伸提问 |
-| **适合场景** | 零基础入门、希望建立扎实知识体系的学习者 |
+> User selects teaching mode when starting a new course. The selection is recorded in the `mode_preference` field of `learner_profile.md`.
+> Mode remains consistent within the same course and cannot be switched mid-course (to prevent teaching content discontinuities).
 
 ---
 
-## 时间估算公式
+## Mode Selection
 
-根据教材总页数和所选模式，估算每课和整个课程的学习时间。
+### Rough Mode (Overview) — Suitable for quick overview or review
 
-### 基础参数
+| Feature | Description |
+|------|------|
+| **Content Density** | Focus on core concepts and key conclusions; omit some detailed cases and extended discussions |
+| **Analogy Usage** | Primarily analogies, 1-2 core analogies per knowledge point |
+| **Textbook Reference** | Selective reference to core textbook ideas, not fully page-by-page coverage |
+| **Teaching Pace** | Faster progression; each knowledge point's P1-P5 flow compressed to P1→P3→P5 |
+| **Probing Depth** | Move forward when the student answers core concepts correctly; no deep probing on edge details |
+| **Suitable For** | Review, overview, learners with limited time |
 
-| 参数 | 粗略模式 | 精细模式 |
+### Detailed Mode (In-depth) — Suitable for systematic learning, deep understanding
+
+| Feature | Description |
+|------|------|
+| **Content Density** | Cover most textbook content, including detailed cases and edge cases |
+| **Analogy Usage** | Multiple analogies approaching the same concept from different angles |
+| **Textbook Reference** | Page-by-page progression, covering main content and examples in the textbook |
+| **Teaching Pace** | Steady progression; full P1-P5 flow for each knowledge point |
+| **Probing Depth** | Thorough probing to confirm understanding, including application-level extension questions |
+| **Suitable For** | Beginners starting from scratch, learners who want to build solid knowledge systems |
+
+---
+
+## Time Estimation Formula
+
+Estimate study time per lesson and entire course based on total textbook pages and selected mode.
+
+### Base Parameters
+
+| Parameter | Rough Mode | Detailed Mode |
 |------|---------|---------|
-| **每分钟处理页数** | 0.30-0.35 页/分钟 | 0.15-0.20 页/分钟 |
-| **每页所需时间** | 约 3 分钟 | 约 5-7 分钟 |
-| **每课基准时间** | 25 分钟 + 5 分钟缓冲 | 45 分钟 + 10 分钟缓冲 |
+| **Pages per minute** | 0.30-0.35 pages/min | 0.15-0.20 pages/min |
+| **Time per page** | ~3 min | ~5-7 min |
+| **Base time per lesson** | 25 min + 5 min buffer | 45 min + 10 min buffer |
 
-### 计算公式
+### Formula
 
 ```
-每课估算时间 = (每课页数 × 每页分钟数) + 固定缓冲
-总课程时间 = Σ 每课时间 + (复习时间 × 复习次数)
+Estimated time per lesson = (pages per lesson × minutes per page) + fixed buffer
+Total course time = Σ lesson time + (review time × number of reviews)
 
-粗略模式示例（8页/课）：
-  每课时间 = 8 × 3 + 5 = 29 分钟 ≈ 30 分钟
-  14 课总时间 ≈ 7 小时
+Rough mode example (8 pages/lesson):
+  Time per lesson = 8 × 3 + 5 = 29 min ≈ 30 min
+  14 lessons total ≈ 7 hours
 
-精细模式示例（8页/课）：
-  每课时间 = 8 × 5 + 10 = 50 分钟 ≈ 50 分钟
-  14 课总时间 ≈ 12 小时
+Detailed mode example (8 pages/lesson):
+  Time per lesson = 8 × 5 + 10 = 50 min ≈ 50 min
+  14 lessons total ≈ 12 hours
 ```
 
-### 按页数的速查表
+### Quick Reference by Page Count
 
-| 每课页数 | 粗略模式（含缓冲） | 精细模式（含缓冲） |
+| Pages per Lesson | Rough Mode (incl. buffer) | Detailed Mode (incl. buffer) |
 |---------|------------------|------------------|
-| 5 页 | ~20 分钟 | ~35 分钟 |
-| 8 页 | ~30 分钟 | ~50 分钟 |
-| 10 页 | ~35 分钟 | ~60 分钟(1h) |
-| 12 页 | ~40 分钟 | ~75 分钟(1h15m) |
-| 15 页 | ~50 分钟 | ~90 分钟(1h30m) |
+| 5 pages | ~20 min | ~35 min |
+| 8 pages | ~30 min | ~50 min |
+| 10 pages | ~35 min | ~60 min (1h) |
+| 12 pages | ~40 min | ~75 min (1h15m) |
+| 15 pages | ~50 min | ~90 min (1h30m) |
 
-### 当前课程估算
+### Current Course Estimate
 
-**ml-yearning**（118 页，14 课，每课约 8-9 页）：
-| 模式 | 每课平均 | 总课程时长 | 推荐每日课数 | 建议完成周期 |
+**ml-yearning** (118 pages, 14 lessons, ~8-9 pages per lesson):
+| Mode | Avg per Lesson | Total Duration | Recommended Daily Lessons | Suggested Completion Period |
 |------|---------|-----------|------------|------------|
-| 粗略 | ~25-30 分钟 | ~6-7 小时 | 3-4 课 | 4-5 天 |
-| 精细 | ~45-55 分钟 | ~11-13 小时 | 2 课 | 7-8 天 |
+| Rough | ~25-30 min | ~6-7 hours | 3-4 lessons | 4-5 days |
+| Detailed | ~45-55 min | ~11-13 hours | 2 lessons | 7-8 days |
 
 ---
 
-## 教学模式选择流程
+## Teaching Mode Selection Flow
 
-在新课程开始时，向用户展示以下选择：
+At the start of a new course, present the following options to the user:
 
 ```
-欢迎登上列车！在开始之前，我先确认两件事——
+Welcome aboard the train! Before we begin, let me confirm two things —
 
-📚 **课程**：{课程名称}（{教材名}，共{总页数}页，{课次数}课）
+📚 **Course**: {Course Name} ({Textbook Name}, {Total Pages} pages, {Number of Lessons} lessons)
 
-🎯 **教学模式**，你想选哪种？
+🎯 **Teaching Mode** — which one would you like?
 
-   [1] 粗略模式 — 聚焦核心概念，每课约 {X} 分钟，全程约 {Y} 小时
-       适合快速上手、时间有限
+  [1] Rough Mode — Focus on core concepts, ~{X} min per lesson, ~{Y} hours total
+       Great for a quick start or limited time
 
-   [2] 精细模式 — 覆盖更多教材细节，每课约 {A} 分钟，全程约 {B} 小时
-       适合系统学习、想深入理解
+  [2] Detailed Mode — Covers more textbook details, ~{A} min per lesson, ~{B} hours total
+       Great for systematic learning and deep understanding
 
-你选哪个？1 还是 2？
+Which one would you like? 1 or 2?
 ```
 
-选择后记录到 learner_profile.md，并在整个课程中保持该模式。
+After selection, record in learner_profile.md and maintain this mode throughout the course.
 
 ---
 
-## 模式对教学流程的影响
+## Mode Impact on Teaching Flow
 
-### 课前准备差异
+### Pre-Lesson Preparation Differences
 
-| 步骤 | 粗略模式 | 精细模式 |
+| Step | Rough Mode | Detailed Mode |
 |------|---------|---------|
-| P0 里程碑关键词 | 2-3 个核心关键词 | 3-5 个关键词 + 子概念 |
-| 教材读取 | 选择性读取核心段落 | 读取完整页码范围 |
-| P0.5 头脑风暴 | 精简，1 条反直觉推论 | 2-3 条反直觉推论 + 应用 |
-| 教学陷阱 | 1 个主要陷阱 | 1-2 个陷阱备用 |
+| P0 Milestone Keywords | 2-3 core keywords | 3-5 keywords + sub-concepts |
+| Textbook Reading | Selectively read core paragraphs | Read full page range |
+| P0.5 Brainstorming | Concise, 1 counter-intuitive inference | 2-3 counter-intuitive inferences + applications |
+| Teaching Pitfall | 1 main pitfall | 1-2 pitfalls as backup |
 
-### P1-P5 流程差异
+### P1-P5 Flow Differences
 
-- **P1 侦察**：粗略 → 2-3 个问题探测；精细 → 3-5 个问题深度探测
-- **P2 先行失败**：粗略 → 快速暴露典型错误；精细 → 给学生充分时间试错
-- **P3 矛盾暴露**：粗略 → 1 个核心矛盾；精细 → 多层次矛盾暴露
-- **P4 重构**：粗略 → 1 个类比 + 核心推理链；精细 → 多重类比 + 扩展讨论
-- **P5 命名**：两者相同——命名权归学生
+- **P1 Recon**: Rough → 2-3 probing questions; Detailed → 3-5 in-depth probing questions
+- **P2 Pre-emptive Failure**: Rough → Quickly expose typical errors; Detailed → Give students ample time to trial and error
+- **P3 Contradiction Exposure**: Rough → 1 core contradiction; Detailed → Multi-layered contradiction exposure
+- **P4 Reconstruction**: Rough → 1 analogy + core reasoning chain; Detailed → Multiple analogies + extended discussion
+- **P5 Naming**: Same for both — naming right belongs to the student
 
-### 课后更新差异
+### Post-Lesson Update Differences
 
-- **粗略模式**：session_log 写 100-150 字摘要，仅标记核心知识点
-- **精细模式**：session_log 写 200-300 字详细摘要，完整标记所有讨论过的知识点
+- **Rough Mode**: session_log writes 100-150 word summary, only marks core knowledge points
+- **Detailed Mode**: session_log writes 200-300 word detailed summary, fully marks all discussed knowledge points
 
-### 复习模块差异
+### Review Module Differences
 
-- **粗略模式**：课前快速复习（1-2 个问题，5 分钟），无课后总结
-- **精细模式**：课前复习（2-3 个问题，8-10 分钟）+ 课后总结（3-5 分钟，学生复述本课要点）
+- **Rough Mode**: Pre-lesson quick review (1-2 questions, 5 min), no post-lesson summary
+- **Detailed Mode**: Pre-lesson review (2-3 questions, 8-10 min) + post-lesson summary (3-5 min, student recaps lesson key points)

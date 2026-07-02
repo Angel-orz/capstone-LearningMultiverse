@@ -1,61 +1,61 @@
-# 🧠 课程记忆档案
+# Memory Archive
 
-> 本文件夹是记忆索引。
-> **每节课的记忆文件现按课程隔离存储在 `courses/{course_id}/memory/` 下。**
-> 新建课程时，记忆文件会自动写入对应的课程独立目录。
+> This folder is the memory index.
+> **Memory files for each lesson are now isolated per course, stored under `courses/{course_id}/memory/`.**
+> When creating a new course, memory files are automatically written to the corresponding course-specific directory.
 
-## 索引
+## Index
 
-### 课程：ml-yearning（Andrew Ng — Machine Learning Yearning）
+### Course: ml-yearning (Andrew Ng — Machine Learning Yearning)
 
-| 记忆文件 | 课次 | 老师 | 核心主题 |
+| Memory File | Lesson | Teacher | Core Topic |
 |---------|------|------|---------|
-| [courses/ml-yearning/memory/ch01.md](courses/ml-yearning/memory/ch01.md) | Ch.1 | 三月 🎀 | 训练集/测试集划分、早停法、过拟合直觉 |
+| [courses/ml-yearning/memory/ch01.md](courses/ml-yearning/memory/ch01.md) | Ch.1 | March 🎀 | Training/test set split, early stopping, overfitting intuition |
 
-### 课程：kaggle-agent（AI Agent 工程化 — Kaggle 系列）
+### Course: kaggle-agent (AI Agent Engineering — Kaggle Series)
 
-| 记忆文件 | 课次 | 老师 | 核心主题 |
+| Memory File | Lesson | Teacher | Core Topic |
 |---------|------|------|---------|
-| [courses/kaggle-agent/memory/ch01.md](courses/kaggle-agent/memory/ch01.md) | Ch.1 | 三月 🎀 | Vibe Coding 光谱、Context Engineering、Factory Model 引入 |
-| [courses/kaggle-agent/memory/ch02.md](courses/kaggle-agent/memory/ch02.md) | Ch.2 | 丹恒 🗡️ | Factory Model、Harness 7 组件、Memory vs Knowledge |
-| [courses/kaggle-agent/memory/ch03.md](courses/kaggle-agent/memory/ch03.md) | Ch.3 | 三月 🎀 | MCP 协议、NxM 问题、A2A 引入 |
-| [courses/kaggle-agent/memory/ch04.md](courses/kaggle-agent/memory/ch04.md) | Ch.4 | 丹恒 🗡️ | A2A 三要素、架构四模式、GOTO Problem |
-| [courses/kaggle-agent/memory/ch05.md](courses/kaggle-agent/memory/ch05.md) | Ch.5 | 三月 🎀 | Agent Skills、翻译已知/结晶新知、三层分工 |
-| [courses/kaggle-agent/memory/ch06.md](courses/kaggle-agent/memory/ch06.md) | Ch.6 | 丹恒 🗡️ | 7-Pillar Security、Evaluation、生产实践 |
+| [courses/kaggle-agent/memory/ch01.md](courses/kaggle-agent/memory/ch01.md) | Ch.1 | March 🎀 | Vibe Coding Spectrum, Context Engineering, Factory Model Introduction |
+| [courses/kaggle-agent/memory/ch02.md](courses/kaggle-agent/memory/ch02.md) | Ch.2 | Dan Heng 🗡️ | Factory Model, Harness 7 Components, Memory vs Knowledge |
+| [courses/kaggle-agent/memory/ch03.md](courses/kaggle-agent/memory/ch03.md) | Ch.3 | March 🎀 | MCP Protocol, NxM Problem, A2A Introduction |
+| [courses/kaggle-agent/memory/ch04.md](courses/kaggle-agent/memory/ch04.md) | Ch.4 | Dan Heng 🗡️ | A2A Three Elements, Architecture Four Patterns, GOTO Problem |
+| [courses/kaggle-agent/memory/ch05.md](courses/kaggle-agent/memory/ch05.md) | Ch.5 | March 🎀 | Agent Skills, Translating Known/Crystallizing New Knowledge, Three-Layer Division of Labor |
+| [courses/kaggle-agent/memory/ch06.md](courses/kaggle-agent/memory/ch06.md) | Ch.6 | Dan Heng 🗡️ | 7-Pillar Security, Evaluation, Production Practice |
 
-### 课程：agent-tools-interoperability（Agent Tools & Interoperability）
+### Course: agent-tools-interoperability (Agent Tools & Interoperability)
 
-| 记忆文件 | 课次 | 老师 | 核心主题 |
+| Memory File | Lesson | Teacher | Core Topic |
 |---------|------|------|---------|
-| [courses/agent-tools-interoperability/memory/ch01.md](courses/agent-tools-interoperability/memory/ch01.md) | Ch.1 | 三月 🎀 | MCP 回顾、MCP vs Skills、调试实操 |
-| [courses/agent-tools-interoperability/memory/ch02.md](courses/agent-tools-interoperability/memory/ch02.md) | Ch.2 | 丹恒 🗡️ | Contextual Overload、A2A 演进、GOTO |
-| [courses/agent-tools-interoperability/memory/ch03.md](courses/agent-tools-interoperability/memory/ch03.md) | Ch.3 | 三月 🎀 | Agent Card、Registry、通信链路 |
-| [courses/agent-tools-interoperability/memory/ch04.md](courses/agent-tools-interoperability/memory/ch04.md) | Ch.4 | 丹恒 🗡️ | A2UI、Generative UI、Canvas |
-| [courses/agent-tools-interoperability/memory/ch05.md](courses/agent-tools-interoperability/memory/ch05.md) | Ch.5 | 三月 🎀 | AP2/UCP 商业协议、Autonomous Procurement |
+| [courses/agent-tools-interoperability/memory/ch01.md](courses/agent-tools-interoperability/memory/ch01.md) | Ch.1 | March 🎀 | MCP Review, MCP vs Skills, Debugging Practice |
+| [courses/agent-tools-interoperability/memory/ch02.md](courses/agent-tools-interoperability/memory/ch02.md) | Ch.2 | Dan Heng 🗡️ | Contextual Overload, A2A Evolution, GOTO |
+| [courses/agent-tools-interoperability/memory/ch03.md](courses/agent-tools-interoperability/memory/ch03.md) | Ch.3 | March 🎀 | Agent Card, Registry, Communication Links |
+| [courses/agent-tools-interoperability/memory/ch04.md](courses/agent-tools-interoperability/memory/ch04.md) | Ch.4 | Dan Heng 🗡️ | A2UI, Generative UI, Canvas |
+| [courses/agent-tools-interoperability/memory/ch05.md](courses/agent-tools-interoperability/memory/ch05.md) | Ch.5 | March 🎀 | AP2/UCP Business Protocols, Autonomous Procurement |
 
-## 文件路径规则
+## File Path Rules
 
-每门课程的所有材料都隔离在独立的目录中：
+All materials for each course are isolated in their own directory:
 
 ```
 teacher/courses/{course_id}/
-├── memory/               # 每课记忆（按章节）
-├── runtime/              # 运行时记录（progress, session_log, diary 等）
-├── story_progression/    # 故事节点
+├── memory/               # Per-lesson memory (by chapter)
+├── runtime/              # Runtime records (progress, session_log, diary, etc.)
+├── story_progression/    # Story nodes
 └── config/
-    └── knowledge_points/ # 知识点覆盖
+    └── knowledge_points/ # Knowledge point coverage
 ```
 
-## 新建课程流程
+## New Course Workflow
 
-1. AI 在 `teacher/courses/` 下创建 `{course_id}/` 目录
-2. 创建 `memory/`、`runtime/`、`story_progression/`、`config/knowledge_points/` 子目录
-3. 初始化 `runtime/progress.md`、`runtime/session_log.md`、`runtime/diary.md`
-4. 后续所有课后更新写入该目录下的对应文件
-5. 共享系统文件（system_core.md、characters/）保持不变
+1. AI creates `{course_id}/` directory under `teacher/courses/`
+2. Create subdirectories: `memory/`, `runtime/`, `story_progression/`, `config/knowledge_points/`
+3. Initialize `runtime/progress.md`, `runtime/session_log.md`, `runtime/diary.md`
+4. All subsequent post-lesson updates are written to the corresponding files in this directory
+5. Shared system files (system_core.md, characters/) remain unchanged
 
-## 生成规则
+## Generation Rules
 
-- **生成时机**：每课课后更新流程的第 10 步
-- **路径**：`teacher/courses/{course_id}/memory/ch{XX}.md`
-- **内容来源**：结合 session_log.md + 课堂对话记录
+- **Generation Timing**: Step 10 of the post-lesson update workflow
+- **Path**: `teacher/courses/{course_id}/memory/ch{XX}.md`
+- **Content Source**: Combined session_log.md + classroom conversation records

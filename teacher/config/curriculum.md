@@ -1,61 +1,61 @@
-# curriculum.md — 课程大纲
+# curriculum.md — Course Curriculum
 
-> 本文件延迟加载。各课教材页码范围已嵌入对应 knowledge_points/ch{XX}.md 头部，无需每课读取本文件。仅在需要查看完整课程结构或跨章节查询时读取。
+> This file is lazily loaded. Page ranges for each lesson's textbook content are embedded in the header of corresponding `knowledge_points/ch{XX}.md` files, so there is no need to read this file per lesson. Read only when needing to view the full course structure or for cross-chapter queries.
 
-## 课程概览
+## Course Overview
 
-| 课次 | 老师 | 教材章节 | 核心知识点 | 页数 |
+| Lesson | Teacher | Textbook Chapters | Core Knowledge Points | Pages |
 |------|------|---------|----------|------|
-| Ch.1 | 三月 | 1-4 | ML 战略、本书用法、前置知识、规模驱动 | 1-10 |
-| Ch.2 | 丹恒 | 5-8 | 开发/测试集、同分布、集大小、单一评估指标 | 10-18 |
-| Ch.3 | 三月 | 9-12 | 优化/满足指标、加速迭代、改变指标、小结 | 18-25 |
-| Ch.4 | 丹恒 | 13-16 | 首个系统、误差分析、并行评估、清理误标 | 26-34 |
-| Ch.5 | 三月 | 17-20 | 眼球/黑盒集、集大小、误差分析小结、偏差与方差 | 34-43 |
-| Ch.6 | 丹恒 | 21-24 | 偏差方差示例、比较最优误差、解决偏差方差、权衡 | 44-52 |
-| Ch.7 | 三月 | 25-28 | 减少可避免偏差、训练集误差分析、减少方差、学习曲线 | 53-62 |
-| Ch.8 | 丹恒 | 29-32 | 绘制训练误差、解读高偏差、其他情况、绘制学习曲线 | 63-69 |
-| Ch.9 | 三月 | 33-36 | 人类级表现、定义人类级、超越人类、不同分布训练测试 | 70-78 |
-| Ch.10 | 丹恒 | 37-40 | 数据利用决策、不一致数据、数据加权、泛化到开发集 | 79-86 |
-| Ch.11 | 三月 | 41-44 | 识别偏差/方差/数据不匹配、解决不匹配、人工合成、优化验证 | 87-96 |
-| Ch.12 | 丹恒 | 45-48 | 优化验证通式、强化学习示例、端到端学习、更多示例 | 97-104 |
-| Ch.13 | 三月 | 49-52 | 端到端优劣、Pipeline 数据可用性、任务简单性、直接学习输出 | 105-111 |
-| Ch.14 | 丹恒 | 53-58 | 分部误差分析、误差归因、通式、与人对比、诊断 Pipeline、团队 | 112-118 |
+| Ch.1 | March | 1-4 | ML strategy, how to use this book, prerequisites, scale-driven | 1-10 |
+| Ch.2 | Dan Heng | 5-8 | Dev/test sets, same distribution, set size, single evaluation metric | 10-18 |
+| Ch.3 | March | 9-12 | Optimizing/satisficing metrics, accelerate iteration, changing metrics, summary | 18-25 |
+| Ch.4 | Dan Heng | 13-16 | First system, error analysis, parallel evaluation, cleaning mislabeled data | 26-34 |
+| Ch.5 | March | 17-20 | Eyeball/black-box sets, set size, error analysis summary, bias & variance | 34-43 |
+| Ch.6 | Dan Heng | 21-24 | Bias-variance examples, comparing optimal error, addressing bias/variance, trade-offs | 44-52 |
+| Ch.7 | March | 25-28 | Reducing avoidable bias, training set error analysis, reducing variance, learning curves | 53-62 |
+| Ch.8 | Dan Heng | 29-32 | Plotting training error, interpreting high bias, other scenarios, plotting learning curves | 63-69 |
+| Ch.9 | March | 33-36 | Human-level performance, defining human-level, surpassing humans, mismatched training/test distributions | 70-78 |
+| Ch.10 | Dan Heng | 37-40 | Data utilization decisions, inconsistent data, data weighting, generalizing to dev set | 79-86 |
+| Ch.11 | March | 41-44 | Identifying bias/variance/data mismatch, addressing mismatch, synthetic data, optimization verification | 87-96 |
+| Ch.12 | Dan Heng | 45-48 | Optimization verification formula, reinforcement learning example, end-to-end learning, more examples | 97-104 |
+| Ch.13 | March | 49-52 | End-to-end pros/cons, Pipeline data availability, task simplicity, learning to output directly | 105-111 |
+| Ch.14 | Dan Heng | 53-58 | Component error analysis, error attribution, formula, human comparison, diagnosing pipelines, teams | 112-118 |
 
-## 教材信息
+## Textbook Info
 
-- **教材**：Andrew Ng — *Machine Learning Yearning* (2018)
-- **总页数**：118 页
-- **总章节**：58 章
-- **路径**：`materials/textbook/andrew-ng-machine-learning-yearning.pdf`
+- **Textbook**: Andrew Ng — *Machine Learning Yearning* (2018)
+- **Total Pages**: 118 pages
+- **Total Chapters**: 58 chapters
+- **Path**: `materials/textbook/andrew-ng-machine-learning-yearning.pdf`
 
-## 知识体系图
+## Knowledge Map
 
 ```
-ML 策略基础 (Ch.1-4)
-  ├── 为什么需要策略
-  ├── 规模驱动 ML 进步
-  └── 设置开发/测试集
+ML Strategy Basics (Ch.1-4)
+  ├── Why strategy is needed
+  ├── Scale-driven ML progress
+  └── Setting up dev/test sets
         ↓
-评估与迭代 (Ch.5-12)
-  ├── 单一评估指标
-  ├── 误差分析
-  ├── 偏差与方差诊断
-  ├── 学习曲线
-  ├── 人类级表现
-  └── 数据分布问题
+Evaluation & Iteration (Ch.5-12)
+  ├── Single evaluation metric
+  ├── Error analysis
+  ├── Bias & variance diagnosis
+  ├── Learning curves
+  ├── Human-level performance
+  └── Data distribution issues
         ↓
-高级决策 (Ch.13-44)
-  ├── 数据加权与不一致处理
-  ├── 人工数据合成
-  ├── 优化验证测试
-  └── 端到端 vs Pipeline
+Advanced Decisions (Ch.13-44)
+  ├── Data weighting & handling inconsistencies
+  ├── Synthetic data generation
+  ├── Optimization verification testing
+  └── End-to-end vs Pipeline
         ↓
-诊断与归因 (Ch.45-58)
-  ├── 误差归因
-  ├── Pipeline 组件选择
-  └── 综合诊断
+Diagnosis & Attribution (Ch.45-58)
+  ├── Error attribution
+  ├── Pipeline component selection
+  └── Comprehensive diagnosis
 ```
 
-## 练习册路径
+## Workbook Path
 
-无配套练习册。教学中通过苏格拉底追问和随堂做题进行练习。错题记录到 `teacher/runtime/mistake_log.md`。
+No accompanying workbook. Practice is done through Socratic questioning and in-class problem-solving during teaching. Incorrect answers are recorded in `teacher/runtime/mistake_log.md`.

@@ -1,49 +1,49 @@
-# syllabus-source.md — 教材来源索引
+# syllabus-source.md — Syllabus Source Index
 
-> 本文件记录每门课程的教材来源信息。
-> 新增课程时，由启动流程（第零步 D）引导用户选择来源并记录于此。
-> 文件存储在 `Docs/{course_id}/` 目录下。
-
----
-
-## 来源类型说明
-
-| 类型 | code | 说明 | 存储位置 |
-|------|------|------|---------|
-| 本地文件 | `local` | 用户指定本地路径，复制到项目 | `Docs/{course_id}/` |
-| 网址 | `url` | 从 URL 下载或提取内容 | `Docs/{course_id}/` |
-| 搜索推荐 | `search` | 自动搜索推荐，选中后按 local/url 处理 | `Docs/{course_id}/` |
+> This file records textbook source information for each course.
+> When adding a new course, the startup workflow (Step Zero D) guides the user to select a source and records it here.
+> Files are stored in the `Docs/{course_id}/` directory.
 
 ---
 
-## 课程教材来源
+## Source Type Description
 
-| 课程 ID | 来源类型 | 原始路径/URL | 本地副本路径 | 备注 |
+| Type | code | Description | Storage Location |
+|------|------|-------------|---------|
+| Local file | `local` | User-specified local path, copied to project | `Docs/{course_id}/` |
+| URL | `url` | Download or extract content from URL | `Docs/{course_id}/` |
+| Search recommendation | `search` | Auto-search recommendations, processed as local/url after selection | `Docs/{course_id}/` |
+
+---
+
+## Course Textbook Sources
+
+| Course ID | Source Type | Original Path/URL | Local Copy Path | Notes |
 |---------|---------|-------------|-------------|------|
-| ml-yearning | local | `materials/textbook/andrew-ng-machine-learning-yearning.pdf` | `Docs/andrew-ng-machine-learning-yearning.pdf` | 本地教材 |
-| kaggle-agent | local | `Docs/Kaggle/` (多文件) | `Docs/Kaggle/` | 本地教材合集 |
-| agent-tools-interoperability | local | `Docs/Kaggle/Agent Tools & Interoperability_Day_2.pdf` | `Docs/Kaggle/` | 本地教材 |
-| agent-skills | local | `Docs/Kaggle/Agent Skills_Day_3.pdf` | `Docs/Kaggle/` | 本地教材 |
-| claude-101 | url | `https://anthropic.skilljar.com/claude-101` | `Docs/claude-101/lessons_markdown/` | SkillJar 在线课程，需登录 |
-| agent-security-eval | local | `Docs/Kaggle/Vibe Coding Agent Security and Evaluation_Day_4.pdf` | `Docs/Kaggle/` | 本地教材 |
+| ml-yearning | local | `materials/textbook/andrew-ng-machine-learning-yearning.pdf` | `Docs/andrew-ng-machine-learning-yearning.pdf` | Local textbook |
+| kaggle-agent | local | `Docs/Kaggle/` (multi-file) | `Docs/Kaggle/` | Local textbook collection |
+| agent-tools-interoperability | local | `Docs/Kaggle/Agent Tools & Interoperability_Day_2.pdf` | `Docs/Kaggle/` | Local textbook |
+| agent-skills | local | `Docs/Kaggle/Agent Skills_Day_3.pdf` | `Docs/Kaggle/` | Local textbook |
+| claude-101 | url | `https://anthropic.skilljar.com/claude-101` | `Docs/claude-101/lessons_markdown/` | SkillJar online course, login required |
+| agent-security-eval | local | `Docs/Kaggle/Vibe Coding Agent Security and Evaluation_Day_4.pdf` | `Docs/Kaggle/` | Local textbook |
 
 ---
 
-## 新增课程教材来源记录
+## New Course Textbook Source Record
 
 ```markdown
-| {course_id} | {local/url/search} | {原始路径或URL} | {副本路径} | {备注} |
+| {course_id} | {local/url/search} | {original path or URL} | {copy path} | {notes} |
 ```
 
-## 教材文件管理规则
+## Textbook File Management Rules
 
-1. **本地文件**：复制到 `Docs/{course_id}/`，保留原始扩展名
-2. **URL 文件**：
-   - 可下载格式（PDF、epub 等）→ `curl -o Docs/{course_id}/{filename}`
-   - 网页内容 → `WebFetch` 提取后保存为 `Docs/{course_id}/content.md`
-   - 同时生成 `Docs/{course_id}/source.txt` 记录原始 URL
-3. **搜索推荐**：
-   - 搜索后展示 3-5 个候选
-   - 用户选定后，按 local 或 url 流程处理
-   - 如果用户选的是推荐教材的在线版本 → url 流程
-   - 如果用户提供本地下载的版本 → local 流程
+1. **Local files**: Copy to `Docs/{course_id}/`, preserve original extension
+2. **URL files**:
+   - Downloadable formats (PDF, epub, etc.) → `curl -o Docs/{course_id}/{filename}`
+   - Web page content → Extract via `WebFetch` and save as `Docs/{course_id}/content.md`
+   - Also generate `Docs/{course_id}/source.txt` to record the original URL
+3. **Search recommendations**:
+   - Show 3-5 candidates after searching
+   - After user selection, process via local or url workflow
+   - If the user selects the online version of a recommended textbook → url workflow
+   - If the user provides a locally downloaded version → local workflow

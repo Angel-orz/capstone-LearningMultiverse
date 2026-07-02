@@ -1,230 +1,232 @@
-# course_catalog.md — 课程目录
+# course_catalog.md — Course Catalog
 
-> 本文件在新会话首次启动时加载。用户选择课程后，所选课程的 ID 记录到 learner_profile.md。
-> 后续会话跳过课程选择，直接进入所选课程。
+> Course content files (PDFs, knowledge points, etc.) are not included in this distribution.
+>
+> This file is loaded on first startup in a new session. After the user selects a course, the selected course's ID is recorded in learner_profile.md.
+> Subsequent sessions skip course selection and go directly to the selected course.
 
-## 课程列表
+## Course List
 
-| 课程ID | 课程名称 | 教材 | 总章节 | 总页数 | 课次数 | 授课教师 |
+| Course ID | Course Name | Textbook | Total Chapters | Total Pages | Number of Lessons | Teacher |
 |--------|---------|------|--------|-------|--------|---------|
-| claude-101 | Claude 101 | Anthropic Academy (SkillJar) | 5 章 | — | 7 | 三月 / 丹恒 |
-| ml-yearning | ML 策略与诊断 | Machine Learning Yearning | 58 | 118 | 14 | 三月 / 丹恒 |
-| kaggle-agent | AI Agent 工程化 | Kaggle Agent 系列 Day 1-4 | 4 篇 | 203 | 6 | 三月 / 丹恒 |
-| agent-tools-interoperability | Agent 工具与互操作 | Agent Tools & Interoperability Day 2 | 1 篇 | 49 | 5 | 三月 / 丹恒 |
-| agent-skills | Agent Skills | Agent Skills Day 3 | 1 篇 | 62 | 6 | 三月 / 丹恒 |
-| agent-security-eval | Vibe Coding Agent 安全与评估 | Vibe Coding Agent Security and Evaluation Day 4 | 1 篇 | 41 | 6 | 三月 / 丹恒 |
+| claude-101 | Claude 101 | Anthropic Academy (SkillJar) | 5 chapters | — | 7 | March / Dan Heng |
+| ml-yearning | ML Strategy & Diagnosis | Machine Learning Yearning | 58 | 118 | 14 | March / Dan Heng |
+| kaggle-agent | AI Agent Engineering | Kaggle Agent Series Day 1-4 | 4 articles | 203 | 6 | March / Dan Heng |
+| agent-tools-interoperability | Agent Tools & Interoperability | Agent Tools & Interoperability Day 2 | 1 article | 49 | 5 | March / Dan Heng |
+| agent-skills | Agent Skills | Agent Skills Day 3 | 1 article | 62 | 6 | March / Dan Heng |
+| agent-security-eval | Vibe Coding Agent Security & Evaluation | Vibe Coding Agent Security and Evaluation Day 4 | 1 article | 41 | 6 | March / Dan Heng |
 
 ---
 
 ### claude-101 — Claude 101
 
-- **全称**：Claude 101——从入门到精通 Claude AI 助手
-- **教材**：Anthropic Academy — *Claude 101* (SkillJar)
-- **总章节**：5 章
-- **课次数**：7 课（每课约 2 节）
-- **授课教师轮值**：三月（奇数课）、丹恒（偶数课）
-- **同行学习者**：帕姆（Pom-Pom）
-- **起点要求**：无（零基础友好）
-- **知识体系**：
+- **Full Name**: Claude 101 — From Beginner to Proficient with Claude AI Assistant
+- **Textbook**: Anthropic Academy — *Claude 101* (SkillJar)
+- **Total Chapters**: 5 chapters
+- **Number of Lessons**: 7 lessons (approximately 2 sections per lesson)
+- **Teacher Rotation**: March (odd-numbered lessons), Dan Heng (even-numbered lessons)
+- **Fellow Learner**: Pom-Pom
+- **Prerequisites**: None (beginners welcome)
+- **Knowledge Structure**:
   ```
-  认识 Claude (Ch.1-2) → 组织工作 (Ch.3-4) → 扩展能力 (Ch.5-6)
-  → 综合应用 (Ch.7-8) → 进阶与认证 (Ch.9-10)
+  Meet Claude (Ch.1-2) → Organizing Work (Ch.3-4) → Extending Capabilities (Ch.5-6)
+  → Comprehensive Application (Ch.7-8) → Advanced & Certification (Ch.9-10)
   ```
-- **教材路径**：`Docs/claude-101/lessons_markdown/`
+- **Textbook Path**: `Docs/claude-101/lessons_markdown/`
 
-#### 课次划分
+#### Lesson Breakdown
 
-| 课次 | 教师 | 教材范围 | 课程节数 | 核心主题 |
+| Lesson | Teacher | Textbook Scope | Sections | Core Topic |
 |------|------|---------|---------|---------|
-| Ch.1 | 三月 🎀 | Lesson 1-2 | 2节 | 认识 Claude + 第一次对话 |
-| Ch.2 | 丹恒 🗡️ | Lesson 3 | 1节 | 获取更好结果的技巧 |
-| Ch.3 | 三月 🎀 | Lesson 4 | 1节 | Projects 组织工作 |
-| Ch.4 | 丹恒 🗡️ | Lesson 5-6 | 2节 | Artifacts + Skills |
-| Ch.5 | 三月 🎀 | Lesson 7-8 | 2节 | 工具连接 + Enterprise Search |
-| Ch.6 | 丹恒 🗡️ | Lesson 9-10 | 2节 | Research Mode + Desktop App |
-| Ch.7 | 三月 🎀 | Lesson 11-14 | 4节 | 场景应用 + 结业 |
+| Ch.1 | March 🎀 | Lesson 1-2 | 2 sections | Meet Claude + First Conversation |
+| Ch.2 | Dan Heng 🗡️ | Lesson 3 | 1 section | Tips for Getting Better Results |
+| Ch.3 | March 🎀 | Lesson 4 | 1 section | Organizing Work with Projects |
+| Ch.4 | Dan Heng 🗡️ | Lesson 5-6 | 2 sections | Artifacts + Skills |
+| Ch.5 | March 🎀 | Lesson 7-8 | 2 sections | Tool Connections + Enterprise Search |
+| Ch.6 | Dan Heng 🗡️ | Lesson 9-10 | 2 sections | Research Mode + Desktop App |
+| Ch.7 | March 🎀 | Lesson 11-14 | 4 sections | Scenario Applications + Graduation |
 
 ---
 
-### agent-tools-interoperability — Agent 工具与互操作
+### agent-tools-interoperability — Agent Tools & Interoperability
 
-- **全称**：Agent Tools & Interoperability——从 MCP 到商业协议
-- **教材**：Kanchana Patlolla 等 — *Agent Tools & Interoperability* (Kaggle Day 2, 2026)
-- **总页数**：49 页
-- **课次数**：5 课（每课约 9-10 页）
-- **授课教师轮值**：三月（奇数课）、丹恒（偶数课）
-- **同行学习者**：帕姆（Pom-Pom）
-- **起点要求**：有 Agent 工程化基础知识（或完成 kaggle-agent 课程）
-- **知识体系**：
+- **Full Name**: Agent Tools & Interoperability — From MCP to Commercial Protocols
+- **Textbook**: Kanchana Patlolla et al. — *Agent Tools & Interoperability* (Kaggle Day 2, 2026)
+- **Total Pages**: 49 pages
+- **Number of Lessons**: 5 lessons (approximately 9-10 pages per lesson)
+- **Teacher Rotation**: March (odd-numbered lessons), Dan Heng (even-numbered lessons)
+- **Fellow Learner**: Pom-Pom
+- **Prerequisites**: Foundational knowledge of Agent engineering (or completion of kaggle-agent course)
+- **Knowledge Structure**:
   ```
-  MCP 深化 (Ch.1) → A2A 架构 (Ch.2) → 协议实现 (Ch.3)
-  → A2UI 交互 (Ch.4) → 商业协议 (Ch.5)
+  MCP Deep Dive (Ch.1) → A2A Architecture (Ch.2) → Protocol Implementation (Ch.3)
+  → A2UI Interaction (Ch.4) → Commercial Protocols (Ch.5)
   ```
-- **教材路径**：`Docs/Kaggle/Agent Tools & Interoperability_Day_2.pdf`
+- **Textbook Path**: `Docs/Kaggle/Agent Tools & Interoperability_Day_2.pdf`
 
-#### 课次划分
+#### Lesson Breakdown
 
-| 课次 | 教师 | 教材范围 | 页数 | 核心主题 |
+| Lesson | Teacher | Textbook Scope | Pages | Core Topic |
 |------|------|---------|------|---------|
-| Ch.1 | 三月 | p6-16 | 11 | MCP 回顾与深化（发现/配置/连接/调试/最佳实践） |
-| Ch.2 | 丹恒 | p17-23 | 7 | A2A 架构演进（内部/外部专业化、边界、GOTO） |
-| Ch.3 | 三月 | p24-30 | 7 | A2A 实现（Agent Card、注册中心、协议扩展） |
-| Ch.4 | 丹恒 | p31-42 | 12 | A2UI + Generative UI + Canvas |
-| Ch.5 | 三月 | p43-49 | 7 | AP2 + UCP 商业协议 |
+| Ch.1 | March | p6-16 | 11 | MCP Review & Deep Dive (Discovery/Configuration/Connection/Debugging/Best Practices) |
+| Ch.2 | Dan Heng | p17-23 | 7 | A2A Architecture Evolution (Internal/External Specialization, Boundaries, GOTO) |
+| Ch.3 | March | p24-30 | 7 | A2A Implementation (Agent Card, Registry, Protocol Extensions) |
+| Ch.4 | Dan Heng | p31-42 | 12 | A2UI + Generative UI + Canvas |
+| Ch.5 | March | p43-49 | 7 | AP2 + UCP Commercial Protocols |
 
 ---
 
-## 详细课程信息
+## Detailed Course Information
 
 ### agent-skills — Agent Skills
 
-- **全称**：Agent Skills——构建、评估与生产化
-- **教材**：Tanvi Singhal 等 — *Agent Skills* (Kaggle Day 3, 2026)
-- **总页数**：62 页
-- **课次数**：6 课（每课约 10 页）
-- **授课教师轮值**：三月（奇数课）、丹恒（偶数课）
-- **同行学习者**：帕姆（Pom-Pom）
-- **起点要求**：已完成 MCP 和 A2A 基础知识
-- **知识体系**：
+- **Full Name**: Agent Skills — Building, Evaluating & Productionizing
+- **Textbook**: Tanvi Singhal et al. — *Agent Skills* (Kaggle Day 3, 2026)
+- **Total Pages**: 62 pages
+- **Number of Lessons**: 6 lessons (approximately 10 pages per lesson)
+- **Teacher Rotation**: March (odd-numbered lessons), Dan Heng (even-numbered lessons)
+- **Fellow Learner**: Pom-Pom
+- **Prerequisites**: Completed foundational knowledge of MCP and A2A
+- **Knowledge Structure**:
   ```
-  Skill 构建 (Ch.1) → 评估方法 (Ch.2-3) → 生产化 (Ch.3)
-  → Meta-Skills (Ch.4) → 组合实践 (Ch.5) → 案例研究 (Ch.6)
+  Skill Construction (Ch.1) → Evaluation Methods (Ch.2-3) → Productionization (Ch.3)
+  → Meta-Skills (Ch.4) → Composition Practice (Ch.5) → Case Study (Ch.6)
   ```
-- **教材路径**：`Docs/Kaggle/Agent Skills_Day_3.pdf`
+- **Textbook Path**: `Docs/Kaggle/Agent Skills_Day_3.pdf`
 
-#### 课次划分
+#### Lesson Breakdown
 
-| 课次 | 教师 | 教材范围 | 页数 | 核心主题 |
+| Lesson | Teacher | Textbook Scope | Pages | Core Topic |
 |------|------|---------|------|---------|
-| Ch.1 | 三月 🎀 | p6-11 | 6 | Skill 解剖 + 两条构建路径 + Skill vs MCP vs AGENTS.md |
-| Ch.2 | 丹恒 🗡️ | p12-24 | 13 | 评估入门 + Evaluation Toolkit |
-| Ch.3 | 三月 🎀 | p25-31 | 7 | Token 预算 + 生产化 + Context Overflow |
-| Ch.4 | 丹恒 🗡️ | p32-38 | 7 | Meta-Skills + 组合与打包 |
-| Ch.5 | 三月 🎀 | p39-42 | 4 | 最佳实践 + 决策指南 |
-| Ch.6 | 丹恒 🗡️ | p43-62 | 20 | Cheatsheet + 零售案例研究 |
+| Ch.1 | March 🎀 | p6-11 | 6 | Skill Anatomy + Two Construction Paths + Skill vs MCP vs AGENTS.md |
+| Ch.2 | Dan Heng 🗡️ | p12-24 | 13 | Evaluation Basics + Evaluation Toolkit |
+| Ch.3 | March 🎀 | p25-31 | 7 | Token Budget + Productionization + Context Overflow |
+| Ch.4 | Dan Heng 🗡️ | p32-38 | 7 | Meta-Skills + Composition & Packaging |
+| Ch.5 | March 🎀 | p39-42 | 4 | Best Practices + Decision Guide |
+| Ch.6 | Dan Heng 🗡️ | p43-62 | 20 | Cheatsheet + Retail Case Study |
 
 ---
 
-### agent-security-eval — Vibe Coding Agent 安全与评估
+### agent-security-eval — Vibe Coding Agent Security & Evaluation
 
-- **全称**：Vibe Coding Agent 安全与评估——从 7 大安全支柱到评估框架
-- **教材**：Sokratis Kartakis 等 — *Vibe Coding Agent Security and Evaluation* (Kaggle Day 4, 2026)
-- **总页数**：41 页
-- **课次数**：6 课（每课约 6-8 页）
-- **授课教师轮值**：三月（奇数课）、丹恒（偶数课）
-- **同行学习者**：帕姆（Pom-Pom）
-- **起点要求**：已完成 kaggle-agent 课程或具备 Agent 工程化基础知识
-- **知识体系**：
+- **Full Name**: Vibe Coding Agent Security & Evaluation — From 7 Security Pillars to Evaluation Frameworks
+- **Textbook**: Sokratis Kartakis et al. — *Vibe Coding Agent Security and Evaluation* (Kaggle Day 4, 2026)
+- **Total Pages**: 41 pages
+- **Number of Lessons**: 6 lessons (approximately 6-8 pages per lesson)
+- **Teacher Rotation**: March (odd-numbered lessons), Dan Heng (even-numbered lessons)
+- **Fellow Learner**: Pom-Pom
+- **Prerequisites**: Completed kaggle-agent course or foundational knowledge of Agent engineering
+- **Knowledge Structure**:
   ```
-  安全基础 (Ch.1) → 沙箱与供应链 (Ch.2) → 身份与信任 (Ch.3)
-  → 可观测性 (Ch.4) → 评估框架 (Ch.5) → 评估实践 (Ch.6)
+  Security Basics (Ch.1) → Sandboxing & Supply Chain (Ch.2) → Identity & Trust (Ch.3)
+  → Observability (Ch.4) → Evaluation Framework (Ch.5) → Evaluation Practice (Ch.6)
   ```
-- **教材路径**：`Docs/Kaggle/Vibe Coding Agent Security and Evaluation_Day_4.pdf`
+- **Textbook Path**: `Docs/Kaggle/Vibe Coding Agent Security and Evaluation_Day_4.pdf`
 
-#### 课次划分
+#### Lesson Breakdown
 
-| 课次 | 教师 | 教材范围 | 页数 | 核心主题 |
+| Lesson | Teacher | Textbook Scope | Pages | Core Topic |
 |------|------|---------|------|---------|
-| Ch.1 | 三月 🎀 | p6-12 | 7 | 安全范式转换 + 7 大支柱架构全景 |
-| Ch.2 | 丹恒 🗡️ | p13-17 | 5 | 沙箱化 + Slopsquatting + Egress + MCP Spoofing |
-| Ch.3 | 三月 🎀 | p18-23 | 6 | Confused Deputy + JIT Downscoping + Red/Blue/Green |
-| Ch.4 | 丹恒 🗡️ | p24-26 | 3 | Vibe Trajectory + Intent Drift + Circuit Breaker |
-| Ch.5 | 三月 🎀 | p27-34 | 8 | 评估 7 维度 + 6 方法 + Standardised Benchmarks |
-| Ch.6 | 丹恒 🗡️ | p35-41 | 7 | 评估实践 + Session Convergence + 用户纠错聚类 |
+| Ch.1 | March 🎀 | p6-12 | 7 | Security Paradigm Shift + 7 Pillar Architecture Overview |
+| Ch.2 | Dan Heng 🗡️ | p13-17 | 5 | Sandboxing + Slopsquatting + Egress + MCP Spoofing |
+| Ch.3 | March 🎀 | p18-23 | 6 | Confused Deputy + JIT Downscoping + Red/Blue/Green |
+| Ch.4 | Dan Heng 🗡️ | p24-26 | 3 | Vibe Trajectory + Intent Drift + Circuit Breaker |
+| Ch.5 | March 🎀 | p27-34 | 8 | 7 Evaluation Dimensions + 6 Methods + Standardised Benchmarks |
+| Ch.6 | Dan Heng 🗡️ | p35-41 | 7 | Evaluation Practice + Session Convergence + User Error Clustering |
 
 ---
 
-### ml-yearning — ML 策略与诊断
+### ml-yearning — ML Strategy & Diagnosis
 
-- **全称**：机器学习策略与诊断（Machine Learning Strategy & Diagnosis）
-- **教材**：Andrew Ng — *Machine Learning Yearning* (2018)
-- **总章节**：58 章
-- **总页数**：118 页
-- **课次数**：14 课（每课约 8-9 页 / 4-5 章）
-- **授课教师轮值**：三月（奇数课）、丹恒（偶数课）
-- **起点要求**：零基础
-- **知识体系**：
+- **Full Name**: Machine Learning Strategy & Diagnosis
+- **Textbook**: Andrew Ng — *Machine Learning Yearning* (2018)
+- **Total Chapters**: 58 chapters
+- **Total Pages**: 118 pages
+- **Number of Lessons**: 14 lessons (approximately 8-9 pages / 4-5 chapters per lesson)
+- **Teacher Rotation**: March (odd-numbered lessons), Dan Heng (even-numbered lessons)
+- **Prerequisites**: None
+- **Knowledge Structure**:
   ```
-  ML 策略基础 (Ch.1-4) → 评估与迭代 (Ch.5-12)
-  → 高级决策 (Ch.13-44) → 诊断与归因 (Ch.45-58)
+  ML Strategy Basics (Ch.1-4) → Evaluation & Iteration (Ch.5-12)
+  → Advanced Decision-Making (Ch.13-44) → Diagnosis & Attribution (Ch.45-58)
   ```
-- **教材路径**：`materials/textbook/andrew-ng-machine-learning-yearning.pdf`
+- **Textbook Path**: `materials/textbook/andrew-ng-machine-learning-yearning.pdf`
 
-#### 课次划分
+#### Lesson Breakdown
 
-| 课次 | 教师 | 教材章节 | 页数范围 | 核心主题 |
+| Lesson | Teacher | Textbook Chapters | Page Range | Core Topic |
 |------|------|---------|---------|---------|
-| Ch.1 | 三月 | 1-4 | 1-10 | ML 战略、规模驱动进步 |
-| Ch.2 | 丹恒 | 5-8 | 10-18 | 开发/测试集、评估指标 |
-| Ch.3 | 三月 | 9-12 | 18-25 | 优化/满足指标、迭代 |
-| Ch.4 | 丹恒 | 13-16 | 26-34 | 误差分析、系统建立 |
-| Ch.5 | 三月 | 17-20 | 34-43 | 集大小、偏差与方差 |
-| Ch.6 | 丹恒 | 21-24 | 44-52 | 比较最优误差、权衡 |
-| Ch.7 | 三月 | 25-28 | 53-62 | 减少偏差/方差、学习曲线 |
-| Ch.8 | 丹恒 | 29-32 | 63-69 | 绘制训练误差、解读 |
-| Ch.9 | 三月 | 33-36 | 70-78 | 人类级表现、分布差异 |
-| Ch.10 | 丹恒 | 37-40 | 79-86 | 数据利用、加权 |
-| Ch.11 | 三月 | 41-44 | 87-96 | 数据不匹配、人工合成 |
-| Ch.12 | 丹恒 | 45-48 | 97-104 | 优化验证、端到端 |
-| Ch.13 | 三月 | 49-52 | 105-111 | 端到端优劣、Pipeline |
-| Ch.14 | 丹恒 | 53-58 | 112-118 | 误差归因、综合诊断 |
+| Ch.1 | March | 1-4 | 1-10 | ML Strategy, Scale-Driven Progress |
+| Ch.2 | Dan Heng | 5-8 | 10-18 | Dev/Test Sets, Evaluation Metrics |
+| Ch.3 | March | 9-12 | 18-25 | Optimizing/Satisficing Metrics, Iteration |
+| Ch.4 | Dan Heng | 13-16 | 26-34 | Error Analysis, System Establishment |
+| Ch.5 | March | 17-20 | 34-43 | Set Size, Bias & Variance |
+| Ch.6 | Dan Heng | 21-24 | 44-52 | Comparing Optimal Error, Trade-offs |
+| Ch.7 | March | 25-28 | 53-62 | Reducing Bias/Variance, Learning Curves |
+| Ch.8 | Dan Heng | 29-32 | 63-69 | Plotting Training Error, Interpretation |
+| Ch.9 | March | 33-36 | 70-78 | Human-Level Performance, Distribution Differences |
+| Ch.10 | Dan Heng | 37-40 | 79-86 | Data Utilization, Weighting |
+| Ch.11 | March | 41-44 | 87-96 | Data Mismatch, Synthetic Data |
+| Ch.12 | Dan Heng | 45-48 | 97-104 | Optimization Verification, End-to-End |
+| Ch.13 | March | 49-52 | 105-111 | End-to-End Pros/Cons, Pipeline |
+| Ch.14 | Dan Heng | 53-58 | 112-118 | Error Attribution, Comprehensive Diagnosis |
 
 ---
 
-### kaggle-agent — AI Agent 工程化
+### kaggle-agent — AI Agent Engineering
 
-- **全称**：AI Agent 工程化——从 Vibe Coding 到生产级智能体
-- **教材**：Kaggle Agent 系列论文（Google, 2026）
-  - Day 1：*The New SDLC With Vibe Coding* — Addy Osmani 等
-  - Day 2：*Agent Tools & Interoperability* — Kanchana Patlolla 等
-  - Day 3：*Agent Skills* — Tanvi Singhal 等
-  - Day 4：*Vibe Coding Agent Security and Evaluation* — Sokratis Kartakis 等
-- **总篇数**：4 篇
-- **总页数**：203 页
-- **课次数**：6 课（每课约 18-35 页）
-- **授课教师轮值**：三月（奇数课）、丹恒（偶数课）
-- **起点要求**：有基础软件开发经验
-- **知识体系**：
+- **Full Name**: AI Agent Engineering — From Vibe Coding to Production-Grade Agents
+- **Textbook**: Kaggle Agent Series Papers (Google, 2026)
+  - Day 1: *The New SDLC With Vibe Coding* — Addy Osmani et al.
+  - Day 2: *Agent Tools & Interoperability* — Kanchana Patlolla et al.
+  - Day 3: *Agent Skills* — Tanvi Singhal et al.
+  - Day 4: *Vibe Coding Agent Security and Evaluation* — Sokratis Kartakis et al.
+- **Total Articles**: 4 articles
+- **Total Pages**: 203 pages
+- **Number of Lessons**: 6 lessons (approximately 18-35 pages per lesson)
+- **Teacher Rotation**: March (odd-numbered lessons), Dan Heng (even-numbered lessons)
+- **Prerequisites**: Basic software development experience
+- **Knowledge Structure**:
   ```
-  基础与范式 (Day 1) → 工具与架构 (Day 2)
-  → 技能构建 (Day 3) → 安全与生产 (Day 4)
+  Basics & Paradigms (Day 1) → Tools & Architecture (Day 2)
+  → Skill Building (Day 3) → Security & Production (Day 4)
   ```
-- **教材路径**：
-  - Day 1：`Docs/Kaggle/Day_1_v3.pdf`
-  - Day 2：`Docs/Kaggle/Agent Tools & Interoperability_Day_2.pdf`
-  - Day 3：`Docs/Kaggle/Agent Skills_Day_3.pdf`
-  - Day 4：`Docs/Kaggle/Vibe Coding Agent Security and Evaluation_Day_4.pdf`
+- **Textbook Paths**:
+  - Day 1: `Docs/Kaggle/Day_1_v3.pdf`
+  - Day 2: `Docs/Kaggle/Agent Tools & Interoperability_Day_2.pdf`
+  - Day 3: `Docs/Kaggle/Agent Skills_Day_3.pdf`
+  - Day 4: `Docs/Kaggle/Vibe Coding Agent Security and Evaluation_Day_4.pdf`
 
-#### 课次划分
+#### Lesson Breakdown
 
-| 课次 | 教师 | 教材 | 页数 | 核心主题 |
+| Lesson | Teacher | Textbook | Pages | Core Topic |
 |------|------|------|------|---------|
-| Ch.1 | 三月 | Day 1 p1-18 | 18 | Vibe Coding 光谱 + Context Engineering |
-| Ch.2 | 丹恒 | Day 1 p19-38 | 20 | Factory Model + Harness Engineering |
-| Ch.3 | 三月 | Day 2 p1-25 | 25 | MCP 协议 + 工具实操 |
-| Ch.4 | 丹恒 | Day 2 p26-49 | 24 | A2A + 智能体架构模式 |
-| Ch.5 | 三月 | Day 3 p1-35 | 35 | Agent Skills 构建与评估 |
-| Ch.6 | 丹恒 | Day 3-4 p36-103 | 35+ | 安全架构 + 生产实践 |
+| Ch.1 | March | Day 1 p1-18 | 18 | Vibe Coding Spectrum + Context Engineering |
+| Ch.2 | Dan Heng | Day 1 p19-38 | 20 | Factory Model + Harness Engineering |
+| Ch.3 | March | Day 2 p1-25 | 25 | MCP Protocol + Tools Hands-On |
+| Ch.4 | Dan Heng | Day 2 p26-49 | 24 | A2A + Agent Architecture Patterns |
+| Ch.5 | March | Day 3 p1-35 | 35 | Agent Skills Construction & Evaluation |
+| Ch.6 | Dan Heng | Day 3-4 p36-103 | 35+ | Security Architecture + Production Practices |
 
 ---
 
-## 扩展说明
+## Extension Notes
 
-### 添加新课程
+### Adding a New Course
 
-后续添加课程时，按以下格式在"课程列表"表格中添加新行，并在下方补充详细章节信息：
+When adding a course later, add a new row to the "Course List" table using the format below, and add detailed chapter information underneath:
 
 ```markdown
-### {course-id} — {课程名称}
-- **教材**：{作者} — {书名}
-- **总章节**：{N} 章
-- **总页数**：{N} 页
-- **课次数**：{N} 课
-- **授课教师**：{教师列表}
-- **知识体系图**：{ASCII 图}
+### {course-id} — {Course Name}
+- **Textbook**: {Author} — {Title}
+- **Total Chapters**: {N} chapters
+- **Total Pages**: {N} pages
+- **Number of Lessons**: {N} lessons
+- **Teacher**: {List of Teachers}
+- **Knowledge Structure**: {ASCII Diagram}
 ```
 
-同时需要在以下位置添加课程对应内容：
-- `teacher/config/knowledge_points/` — 按课次的知识点文件（课程ID为子目录名）
-- `teacher/story_progression/` — 按课次的故事节点（课程ID为子目录名）
-- `teacher/characters/` — 授课教师角色文件（可复用）
+At the same time, course content needs to be added in the following locations:
+- `teacher/config/knowledge_points/` — Knowledge point files by lesson (course ID as subdirectory name)
+- `teacher/story_progression/` — Story nodes by lesson (course ID as subdirectory name)
+- `teacher/characters/` — Teacher character files (reusable)
